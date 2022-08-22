@@ -4,21 +4,22 @@
   box-sizing: border-box;
 }
 
-body {
-  color: white;
-  /* background-color: #282c34; */
-}
-
 .App {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  place-items: center;
+  margin-top: 3rem;
   padding: 0 3rem;
   text-align: center;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 500px 1fr;
+main header .quote {
+  font-size: 1.5rem;
 }
 
-main > * {
-  border: solid pink 2px;
+footer {
+  margin: 0.5rem;
+  color: black;
+  position: fixed;
+  bottom: 0;
 }
