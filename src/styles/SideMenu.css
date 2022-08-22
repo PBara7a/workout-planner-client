@@ -13,6 +13,12 @@
   font-family: "Oswald", sans-serif;
 }
 
+.side-menu__container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
 .side-menu {
   position: relative;
   transform: skewY(-15deg);

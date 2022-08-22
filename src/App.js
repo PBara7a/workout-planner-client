@@ -1,6 +1,7 @@
+import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import SideMenu from "./components/SideMenu";
-import Header from "./components/Header";
+import Home from "./components/Home";
 import "./App.css";
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
     <div className="App">
       <SideMenu />
       <main>
-        <Header />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
     </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import quotes from "../utils/quotes";
 
-const Header = () => {
+const Home = () => {
   const randIndex = Math.floor(Math.random() * quotes.length);
   const [quote, setQuote] = useState(quotes[randIndex]);
 
@@ -16,4 +16,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Home;

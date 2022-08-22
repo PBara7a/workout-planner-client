@@ -7,10 +7,12 @@
 .App {
   display: grid;
   grid-template-columns: 500px 1fr;
-  place-items: center;
-  margin-top: 3rem;
-  padding: 0 3rem;
   text-align: center;
+}
+
+main {
+  display: grid;
+  place-items: center;
 }
 
 main header .quote {
@@ -18,6 +20,7 @@ main header .quote {
 }
 
 footer {
+  width: 100%;
   margin: 0.5rem;
   color: black;
   position: fixed;
