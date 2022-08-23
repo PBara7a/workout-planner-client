@@ -1,0 +1,58 @@
+.create-workout {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr auto;
+}
+
+.exercises-list {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  list-style: none;
+}
+
+.page-controls {
+  margin: 1rem 0 3rem 0;
+}
+
+.page-controls button {
+  --size: 32px;
+  margin: 0 1px;
+  border-radius: 6px;
+  background: #3e3f46;
+  color: #999;
+  min-width: var(--size);
+  height: var(--size);
+  cursor: pointer;
+  padding: 0 6px;
+  border: none;
+}
+
+.page-controls button:hover {
+  color: #fff;
+  background: #33a3ee;
+}
+
+.page-controls input {
+  margin: 0 3px;
+  max-width: 50px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+.exercises-filters {
+  /* margin-top: 1rem; */
+}
+
+.exercises-filters select {
+  color: #999;
+  background: #3e3f46;
+  transform: skewY(-20deg) rotate(15deg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0.2rem;
+  min-width: 180px;
+}
