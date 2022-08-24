@@ -4,6 +4,7 @@ import ExerciseCard from "../ExerciseCard";
 import "../../styles/CreateWorkout.css";
 import PaginationControls from "./PaginationControls";
 import FilterControls from "./FilterControls";
+import NewWorkoutForm from "./NewWorkoutForm";
 
 const CreateWorkout = () => {
   const { exercises, bodyparts, targets, equipments } = useExercises();
@@ -13,8 +14,7 @@ const CreateWorkout = () => {
     targetFilter: null,
     equipmentFilter: null,
   });
-
-  console.log(filters);
+  const [workout, setWorkout] = useState([]);
 
   // Pagination
   const numOfCardsPerPage = 4;
@@ -68,16 +68,31 @@ const CreateWorkout = () => {
     setFilters({ ...filters, [name]: Number(value) });
   };
 
+  const handleClick = (deletable, item) => {
+    if (deletable) {
+      setWorkout(workout.filter((exercise) => exercise !== item));
+    } else {
+      setWorkout([...workout, item]);
+    }
+  };
+
+  const resetWorkout = () => setWorkout([]);
+
   return (
-    <div className="create-workout">
-      <div>top</div>
-      <ul className="exercises-list">
-        {exercisesToRender.map((exercise) => (
-          <li key={exercise.id}>
-            <ExerciseCard exercise={exercise} />
-          </li>
+    <div className="create-workout-page">
+      <NewWorkoutForm workout={workout} resetWorkout={resetWorkout} />
+
+      <div className="exercises-container">
+        {exercisesToRender.map((exercise, i) => (
+          <ExerciseCard
+            key={exercise.id}
+            style={{ "--z-index": exercisesToRender.length - i }}
+            exercise={exercise}
+            handleClick={handleClick}
+            index={i}
+          />
         ))}
-      </ul>
+      </div>
 
       <div>
         <FilterControls

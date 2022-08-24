@@ -1,15 +1,27 @@
-.create-workout {
+.create-workout-page {
   height: 100vh;
   display: grid;
+  gap: 2rem;
   grid-template-rows: 1fr 1fr auto;
 }
 
-.exercises-list {
-  width: 100%;
+.workout-plan {
+  height: 100%;
   display: grid;
   place-items: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   list-style: none;
+
+  border: #3e3f46 1px solid;
+  border-radius: 25px;
+  box-shadow: inset 0 0 50px 10px black;
+}
+
+.exercises-container {
+  display: grid;
+  place-items: center;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .page-controls {
@@ -41,10 +53,6 @@
   border-radius: 5px;
 }
 
-.exercises-filters {
-  /* margin-top: 1rem; */
-}
-
 .exercises-filters select {
   color: #999;
   background: #3e3f46;
@@ -55,4 +63,142 @@
   text-align: center;
   margin: 0.2rem;
   min-width: 180px;
+}
+
+.workout-form {
+  padding: 20px;
+}
+
+.workout-form h1 {
+  margin: 2rem 0;
+}
+
+.workout-form__inputs-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.workout-form__inp {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.workout-form__inp .workout-form__label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.workout-form__inp input {
+  width: 100%;
+  border: none;
+  padding: 16px 12px 0 12px;
+  height: 56px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: #3e3f46;
+  transition: all 0.15s ease;
+}
+
+.workout-form__inp textarea {
+  width: 100%;
+  border: none;
+  padding: 16px 12px 0 12px;
+  height: 5rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: #3e3f46;
+  transition: all 0.15s ease;
+  resize: none;
+}
+
+.workout-form__inp input:hover,
+.workout-form__inp textarea:hover {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.workout-form__inp input:focus,
+.workout-form__inp textarea:focus {
+  background: rgba(0, 0, 0, 0.05);
+  outline: none;
+  box-shadow: inset 0 -2px 0 #33a3ee;
+}
+
+.workout-form__inp input:focus + .workout-form__label,
+.workout-form__inp textarea:focus + .workout-form__label {
+  color: #33a3ee;
+  transform: translate3d(0, -12px, 0) scale(0.75);
+}
+
+.workout-form__inp
+  input:focus
+  + .workout-form__label
+  + .workout-form__focus-bg {
+  transform: scaleX(1);
+  transition: all 0.1s ease;
+}
+
+.new-workout-exercises {
+  width: 100%;
+  padding: 16px 12px 0 12px;
+  height: 5rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
+  overflow-x: auto;
+}
+
+.new-workout-exercises:hover {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.workout-form__intructions {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  margin-top: -0.5rem;
+}
+
+.new-workout-exercises ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+}
+
+.workout-form__btn {
+  margin: 0 2rem;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3e3f46;
+  background: white;
+  border: 2px solid #3e3f46;
+  box-shadow: 5px 5px 0 #3e3f46, -5px -5px 0 #3e3f46, -5px 5px 0 #3e3f46,
+    5px -5px 0 #3e3f46;
+  transition: 500ms ease-in-out;
+}
+
+.workout-form__btn:hover {
+  box-shadow: 20px 5px 0 #3e3f46, -20px -5px 0 #3e3f46;
+  color: #33a3ee;
+}
+
+.workout-form__btn:focus {
+  outline: none;
 }
