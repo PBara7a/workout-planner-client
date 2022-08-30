@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NewWorkoutForm = ({ workout, resetWorkout }) => {
+const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
 
@@ -74,10 +74,15 @@ const NewWorkoutForm = ({ workout, resetWorkout }) => {
             </p>
           )}
           <ul>
-            {workout.map((exercise) => (
+            {workout.map((exercise, i) => (
               <li className="workout-form__exercise-li" key={exercise.id}>
                 <span>{exercise.name}</span>
-                <span className="workout-form__exercise-li__undo">↺</span>
+                <span
+                  className="workout-form__exercise-li__undo"
+                  onClick={() => removeExercise(i)}
+                >
+                  ↺
+                </span>
               </li>
             ))}
           </ul>

@@ -76,11 +76,21 @@ const CreateWorkout = () => {
     }
   };
 
+  const removeExercise = (index) => {
+    const updatedWokout = [...workout];
+    updatedWokout.splice(index, 1);
+    setWorkout(updatedWokout);
+  };
+
   const resetWorkout = () => setWorkout([]);
 
   return (
     <div className="create-workout-page">
-      <NewWorkoutForm workout={workout} resetWorkout={resetWorkout} />
+      <NewWorkoutForm
+        workout={workout}
+        resetWorkout={resetWorkout}
+        removeExercise={removeExercise}
+      />
 
       <div className="exercises-container">
         {exercisesToRender.map((exercise, i) => (
