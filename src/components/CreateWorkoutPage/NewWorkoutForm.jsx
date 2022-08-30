@@ -4,8 +4,6 @@ const NewWorkoutForm = ({ workout, resetWorkout }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
 
-  console.log(formData);
-
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
@@ -19,6 +17,23 @@ const NewWorkoutForm = ({ workout, resetWorkout }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const data = { ...formData };
+    data.exercises = workout.map((exercise) => exercise.id);
+
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    };
+
+    try {
+      fetch("http://localhost:4040/workout", options);
+    } catch (e) {
+      console.error(e);
+    }
 
     handleReset(e);
   };
@@ -60,7 +75,10 @@ const NewWorkoutForm = ({ workout, resetWorkout }) => {
           )}
           <ul>
             {workout.map((exercise) => (
-              <li key={exercise.id}>{exercise.name}</li>
+              <li className="workout-form__exercise-li" key={exercise.id}>
+                <span>{exercise.name}</span>
+                <span className="workout-form__exercise-li__undo">↺</span>
+              </li>
             ))}
           </ul>
         </div>

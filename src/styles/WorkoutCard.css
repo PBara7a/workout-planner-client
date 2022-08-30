@@ -1,0 +1,130 @@
+.workout-card,
+.workout-card-expanded {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+    inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+    5px 5px 5px rgba(0, 0, 0, 0.05), -5px -5px 5px rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+}
+
+.workout-card .box,
+.workout-card-expanded .box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #ebf5fc;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: grid;
+  transition: 0.5s;
+}
+
+.workout-card .box {
+  place-items: center;
+}
+
+.workout-card:hover .box {
+  transform: translateY(-25px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.workout-card .box .content,
+.workout-card-expanded .box .content {
+  padding: 1rem;
+}
+
+.workout-card .box .content h2,
+.workout-card-expanded .box .content h2 {
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  font-size: 8rem;
+  color: rgba(0, 0, 0, 0.02);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.workout-card:hover .box .content h2,
+.workout-card-expanded:hover .box .content h2 {
+  color: rgba(0, 0, 0, 0.05);
+}
+
+.workout-card .box .content h3,
+.workout-card-expanded .box .content h3 {
+  font-size: 1.8rem;
+  color: #777;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.workout-card .box .content button,
+.workout-card-expanded .box .content button {
+  position: relative;
+  display: inline-block;
+  padding: 0.2rem 1.2rem;
+  background: #00c7ff;
+  margin-top: 1rem;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.workout-card-expanded .box .content button {
+  margin: 0.5rem;
+}
+
+.workout-card:hover .box .content button,
+.workout-card-expanded .box .content button:hover {
+  background: #ff568f;
+}
+
+.workout-card-expanded {
+  width: 99%;
+  height: 80vh;
+  margin-bottom: 2rem;
+}
+
+.workout-card-expanded .box .content {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  overflow: auto;
+}
+
+.workout-card-expanded .box .content p {
+  color: #777;
+}
+
+.workout-card-expanded .box .content .exercise-demos {
+  margin: 1rem 0;
+}
+
+.workout-card-expanded .box .content img {
+  margin: 0.5rem;
+  height: 10rem;
+  border-radius: 15px;
+}
+
+.workout-card-expanded .box .content .send-email-form {
+  margin: 1rem 0.5rem;
+}
+
+.workout-card-expanded .box .content input {
+  text-align: center;
+  min-width: 40%;
+  outline: none;
+  border: 2px solid #777;
+  border-radius: 25px;
+  color: #777;
+}
+
+.workout-card-expanded .box .content input:hover {
+  border: 2px solid #00c7ff;
+}

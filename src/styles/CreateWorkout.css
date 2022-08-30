@@ -153,7 +153,7 @@
 
 .new-workout-exercises {
   width: 100%;
-  padding: 16px 12px 0 12px;
+  padding: 16px 12px;
   height: 5rem;
   font-size: 1rem;
   background: rgba(0, 0, 0, 0.02);
@@ -176,7 +176,18 @@
 .new-workout-exercises ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   list-style: none;
+  text-align: left;
+}
+
+.workout-form__exercise-li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.workout-form__exercise-li__undo {
+  cursor: pointer;
 }
 
 .workout-form__btn {

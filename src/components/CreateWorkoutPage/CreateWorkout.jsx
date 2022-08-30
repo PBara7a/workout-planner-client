@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useExercises } from "../contexts/ExercisesContext";
-import ExerciseCard from "../ExerciseCard";
+import ExerciseCard from "./ExerciseCard";
 import "../../styles/CreateWorkout.css";
 import PaginationControls from "./PaginationControls";
 import FilterControls from "./FilterControls";

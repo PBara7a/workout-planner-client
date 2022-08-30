@@ -1,5 +1,5 @@
-import { useExercises } from "./contexts/ExercisesContext";
-import "../styles/ExerciseCard.css";
+import { useExercises } from "../contexts/ExercisesContext";
+import "../../styles/ExerciseCard.css";
 
 const ExerciseCard = ({ exercise, handleClick, deletable }) => {
   const { targets, equipments } = useExercises();
