@@ -7,7 +7,23 @@ const WorkoutCardExpanded = ({ workout, setOpenWorkout }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+
+    const data = { email, workout: workout.id };
+
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    };
+
+    try {
+      fetch("http://localhost:4040/email", options);
+    } catch (e) {
+      console.error(e);
+    }
+
     setEmail("");
   };
 
