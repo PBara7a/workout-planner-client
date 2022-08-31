@@ -127,3 +127,33 @@
 .workout-card-expanded .box .content input:hover {
   border: 2px solid #00c7ff;
 }
+
+@media screen and (max-width: 1400px) {
+  .workout-card {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .workout-card .box .content h2,
+  .workout-card-expanded .box .content h2 {
+    font-size: 6rem;
+  }
+
+  .workout-card .box .content h3,
+  .workout-card-expanded .box .content h3 {
+    font-size: 1.3rem;
+  }
+
+  .workout-card-expanded .box .content .exercise-demos {
+    margin-bottom: 0;
+  }
+
+  .workout-card-expanded .box .content img {
+    margin: 0.5rem;
+    height: 6rem;
+  }
+
+  .workout-card-expanded .box .content .send-email-form {
+    margin: 0.2rem 0;
+  }
+}

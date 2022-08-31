@@ -1,8 +1,7 @@
 .create-workout-page {
-  height: 100vh;
+  height: 95%;
   display: grid;
-  gap: 2rem;
-  grid-template-rows: 1fr 1fr auto;
+  grid-template-rows: auto 1fr auto;
 }
 
 .workout-plan {
@@ -25,7 +24,7 @@
 }
 
 .page-controls {
-  margin: 1rem 0 3rem 0;
+  margin: 1rem;
 }
 
 .page-controls button {
@@ -71,10 +70,6 @@
   text-align: center;
   margin: 0.2rem;
   min-width: 180px;
-}
-
-.workout-form {
-  padding: 20px;
 }
 
 .workout-form h1 {
@@ -220,4 +215,47 @@
 
 .workout-form__btn:focus {
   outline: none;
+}
+
+@media screen and (max-width: 1950px) {
+  .exercises-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .workout-form h1 {
+    margin: 0;
+  }
+
+  .workout-form__inp .workout-form__label {
+    font-size: 0.8rem;
+  }
+
+  .workout-form__inp input {
+    height: 2rem;
+  }
+
+  .workout-form__inp textarea {
+    height: 3rem;
+  }
+
+  .new-workout-exercises {
+    height: 3rem;
+    font-size: 0.8rem;
+  }
+
+  .workout-form__btn {
+    width: 75px;
+    height: 40px;
+  }
+
+  .exercises-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .exercises-filters select,
+  .exercises-filters input {
+    min-width: 150px;
+  }
 }

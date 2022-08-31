@@ -59,6 +59,8 @@ const CreateWorkout = () => {
     } else if (name === "name") {
       setFilters({ ...filters, [name]: value });
     }
+
+    setPage(1);
   };
 
   const handleClick = (deletable, item) => {

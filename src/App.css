@@ -29,15 +29,15 @@ main header .quote {
 
 footer {
   width: 100%;
-  margin: 0.5rem;
-  color: black;
+  margin: 0.2rem;
+  color: rgba(0, 0, 0, 0.2);
   position: fixed;
   bottom: 0;
 }
 
 .my-workouts-page {
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
   height: 100%;
 }
 
@@ -52,6 +52,19 @@ footer {
   place-items: center;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin-bottom: 3.5rem;
   overflow: auto;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 1950px) {
+  .workouts-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .my-workouts-page h1 {
+    margin: 0.9rem 0;
+  }
 }
