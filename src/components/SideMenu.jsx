@@ -1,7 +1,7 @@
 import "../styles/SideMenu.css";
 
 const SideMenu = () => {
-  const menuItems = ["Home", "My Workouts", "Create Workout", "Calendar"];
+  const menuItems = ["Home", "My Workouts", "Create Workout"];
 
   return (
     <nav className="side-menu__container">

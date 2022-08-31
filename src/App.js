@@ -15,7 +15,7 @@ function App() {
           <SideMenu />
           <main>
             <Routes>
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/my-workouts" element={<MyWorkouts />} />
               <Route path="/create-workout" element={<CreateWorkout />} />
             </Routes>

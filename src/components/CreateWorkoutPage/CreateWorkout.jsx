@@ -6,15 +6,57 @@ import PaginationControls from "./PaginationControls";
 import FilterControls from "./FilterControls";
 import NewWorkoutForm from "./NewWorkoutForm";
 
+const defaultFilters = {
+  bodypartFilter: "",
+  targetFilter: "",
+  equipmentFilter: "",
+  name: "",
+};
+
 const CreateWorkout = () => {
   const { exercises, bodyparts, targets, equipments } = useExercises();
   const [page, setPage] = useState(1);
-  const [filters, setFilters] = useState({
-    bodypartFilter: null,
-    targetFilter: null,
-    equipmentFilter: null,
-  });
+  const [filters, setFilters] = useState(defaultFilters);
   const [workout, setWorkout] = useState([]);
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "bodypartFilter") {
+      targetOptions = targets;
+      equipmentOptions = equipments;
+
+      setFilters({ ...defaultFilters, [name]: Number(value) });
+    } else if (name === "targetFilter") {
+      equipmentOptions = equipments;
+
+      setFilters({
+        ...defaultFilters,
+        bodypartFilter: filters.bodypartFilter,
+        [name]: Number(value),
+      });
+    } else if (name === "equipmentFilter") {
+      setFilters({ ...filters, [name]: Number(value) });
+    } else if (name === "name") {
+      setFilters({ ...filters, [name]: value });
+    }
+  };
+
+  const handleClick = (deletable, item) => {
+    if (deletable) {
+      setWorkout(workout.filter((exercise) => exercise !== item));
+    } else {
+      setWorkout([...workout, item]);
+    }
+  };
+
+  const removeExercise = (index) => {
+    const updatedWokout = [...workout];
+    updatedWokout.splice(index, 1);
+    setWorkout(updatedWokout);
+  };
+
+  const resetWorkout = () => setWorkout([]);
 
   // Pagination
   const numOfCardsPerPage = 4;
@@ -55,34 +97,13 @@ const CreateWorkout = () => {
     );
   }
 
+  if (filters.name) {
+    filteredExercises = filteredExercises.filter((exercise) =>
+      exercise.name.includes(filters.name.toLowerCase())
+    );
+  }
+
   const exercisesToRender = filteredExercises.slice(startIndex, endIndex);
-
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "bodypartFilter") {
-      targetOptions = targets;
-      equipmentOptions = equipments;
-    }
-
-    setFilters({ ...filters, [name]: Number(value) });
-  };
-
-  const handleClick = (deletable, item) => {
-    if (deletable) {
-      setWorkout(workout.filter((exercise) => exercise !== item));
-    } else {
-      setWorkout([...workout, item]);
-    }
-  };
-
-  const removeExercise = (index) => {
-    const updatedWokout = [...workout];
-    updatedWokout.splice(index, 1);
-    setWorkout(updatedWokout);
-  };
-
-  const resetWorkout = () => setWorkout([]);
 
   return (
     <div className="create-workout-page">
@@ -106,6 +127,7 @@ const CreateWorkout = () => {
 
       <div>
         <FilterControls
+          filters={filters}
           handleFilterChange={handleFilterChange}
           bodyparts={bodyparts}
           targets={targetOptions}

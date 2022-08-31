@@ -53,7 +53,8 @@
   border-radius: 5px;
 }
 
-.exercises-filters select {
+.exercises-filters select,
+.exercises-filters input {
   color: #999;
   background: #3e3f46;
   transform: skewY(-20deg) rotate(15deg);

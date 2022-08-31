@@ -1,31 +1,16 @@
-import { useState } from "react";
-
 const FilterControls = ({
+  filters,
   handleFilterChange,
   bodyparts,
   targets,
   equipments,
 }) => {
-  const [state, setState] = useState({
-    bodypartFilter: "",
-    targetFilter: "",
-    equipmentFilter: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setState({ ...state, [name]: value });
-
-    handleFilterChange(e);
-  };
-
   return (
     <div className="exercises-filters">
       <select
-        value={state.bodypartFilter}
+        value={filters.bodypartFilter}
         name="bodypartFilter"
-        onChange={handleChange}
+        onChange={handleFilterChange}
       >
         <option className="option" value="">
           --Group--
@@ -38,9 +23,9 @@ const FilterControls = ({
       </select>
 
       <select
-        value={state.targetFilter}
+        value={filters.targetFilter}
         name="targetFilter"
-        onChange={handleChange}
+        onChange={handleFilterChange}
       >
         <option className="option" value="">
           --Target--
@@ -53,9 +38,9 @@ const FilterControls = ({
       </select>
 
       <select
-        value={state.equipmentFilter}
+        value={filters.equipmentFilter}
         name="equipmentFilter"
-        onChange={handleChange}
+        onChange={handleFilterChange}
       >
         <option className="option" value="">
           --Equipment--
@@ -66,6 +51,14 @@ const FilterControls = ({
           </option>
         ))}
       </select>
+
+      <input
+        type="text"
+        placeholder="name"
+        name="name"
+        value={filters.name}
+        onChange={handleFilterChange}
+      />
     </div>
   );
 };
