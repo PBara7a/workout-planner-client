@@ -1,25 +1,16 @@
-const PaginationControls = ({
-  page,
-  setPage,
-  numOfExercises,
-  numOfCardsPerPage,
-}) => {
+const PaginationControls = ({ page, setPage, handlePageChange }) => {
   return (
     <nav className="page-controls">
-      <button onClick={(e) => setPage(1)}>&laquo;</button>
-      <button onClick={(e) => setPage(page - 1)}>&lt;</button>
+      <button onClick={() => handlePageChange("first")}>&laquo;</button>
+      <button onClick={() => handlePageChange("previous")}>&lt;</button>
       <input
         type="number"
-        min={1}
+        min="1"
         value={page}
         onChange={(e) => setPage(e.target.value)}
       />
-      <button onClick={(e) => setPage(page + 1)}>&gt;</button>
-      <button
-        onClick={(e) => setPage(Math.ceil(numOfExercises / numOfCardsPerPage))}
-      >
-        &raquo;
-      </button>
+      <button onClick={() => handlePageChange("next")}>&gt;</button>
+      <button onClick={() => handlePageChange("last")}>&raquo;</button>
     </nav>
   );
 };

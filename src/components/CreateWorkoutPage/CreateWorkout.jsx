@@ -19,6 +19,25 @@ const CreateWorkout = () => {
   const [filters, setFilters] = useState(defaultFilters);
   const [workout, setWorkout] = useState([]);
 
+  const handlePageChange = (action) => {
+    const lastPage = Math.ceil(filteredExercises.length / numOfCardsPerPage);
+    switch (action) {
+      case "next":
+        if (page < lastPage) setPage(page + 1);
+        break;
+      case "previous":
+        if (page > 1) setPage(page - 1);
+        break;
+      case "last":
+        setPage(lastPage);
+        break;
+      case "first":
+        setPage(1);
+        break;
+      default:
+    }
+  };
+
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
 
@@ -139,6 +158,7 @@ const CreateWorkout = () => {
           setPage={setPage}
           numOfExercises={filteredExercises.length}
           numOfCardsPerPage={numOfCardsPerPage}
+          handlePageChange={handlePageChange}
         />
       </div>
     </div>

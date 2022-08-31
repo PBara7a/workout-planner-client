@@ -47,10 +47,17 @@
 }
 
 .page-controls input {
+  text-align: center;
   margin: 0 3px;
   max-width: 50px;
   height: 32px;
   border-radius: 5px;
+  -moz-appearance: textfield;
+}
+
+.page-controls input::-webkit-outer-spin-button,
+.page-controls input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 .exercises-filters select,
