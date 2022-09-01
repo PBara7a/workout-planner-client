@@ -16,7 +16,6 @@
 }
 
 .side-menu__container {
-  /* position: sticky; */
   display: grid;
   place-items: center;
   height: 100vh;

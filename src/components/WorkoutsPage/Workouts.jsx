@@ -1,19 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import WorkoutCard from "./WorkoutCard";
 import WorkoutCardExpanded from "./WorkoutExpanded";
-import client from "../../utils/client";
+import { useExercises } from "../contexts/ExercisesContext";
 
 const MyWorkoutsPage = () => {
-  const [workouts, setWorkouts] = useState([]);
   const [openWorkout, setOpenWorkout] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await client.get("/workout");
-
-      setWorkouts(data.workouts);
-    })();
-  }, []);
+  const { workouts } = useExercises();
 
   return (
     <section className="my-workouts-page">
@@ -26,7 +18,7 @@ const MyWorkoutsPage = () => {
             setOpenWorkout={setOpenWorkout}
           />
         ) : (
-          workouts.map((workout, i) => (
+          workouts?.map((workout, i) => (
             <WorkoutCard
               key={workout.id}
               workout={workout}

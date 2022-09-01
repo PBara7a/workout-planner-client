@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer";
-import SideMenu from "./components/SideMenu";
-import Home from "./components/Home";
-import CreateWorkout from "./components/CreateWorkoutPage/CreateWorkout";
-import { ExercisesContextProvider } from "./components/contexts/ExercisesContext";
-import "./App.css";
-import Workouts from "./components/WorkoutsPage/Workouts";
+import Footer from "./Footer";
+import SideMenu from "./SideMenu";
+import Home from "./Home";
+import CreateWorkout from "./CreateWorkoutPage/CreateWorkout";
+import { ExercisesContextProvider } from "./contexts/ExercisesContext";
+import "../styles/App.css";
+import Workouts from "./WorkoutsPage/Workouts";
 
 function App() {
   return (

@@ -3,7 +3,7 @@ import quotes from "../utils/quotes";
 
 const Home = () => {
   const randIndex = Math.floor(Math.random() * quotes.length);
-  const [quote, setQuote] = useState(quotes[randIndex]);
+  const [quote] = useState(quotes[randIndex]);
 
   return (
     <header>
