@@ -1,4 +1,5 @@
 import { useExercises } from "../contexts/ExercisesContext";
+import urls from "../../utils/demoUrls.json";
 import "../../styles/ExerciseCard.css";
 
 const ExerciseCard = ({ exercise, handleClick, deletable }) => {
@@ -16,7 +17,7 @@ const ExerciseCard = ({ exercise, handleClick, deletable }) => {
     <div className="card" onClick={() => handleClick(deletable, exercise)}>
       <div className="imgBox">
         <img
-          src={`gifs/${exercise.demo}.gif`}
+          src={urls[exercise.demo]}
           alt="Exercise demo"
           className="card__image"
         />

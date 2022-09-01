@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../styles/WorkoutCard.css";
 import client from "../../utils/client";
+import urls from "../../utils/demoUrls.json";
 
 const WorkoutCardExpanded = ({ workout, setOpenWorkout }) => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,7 @@ const WorkoutCardExpanded = ({ workout, setOpenWorkout }) => {
             {workout.exercises.map((exercise) => (
               <img
                 key={exercise.id}
-                src={`gifs/${exercise.demo}.gif`}
+                src={urls[exercise.demo]}
                 alt="exercise demo"
               />
             ))}
