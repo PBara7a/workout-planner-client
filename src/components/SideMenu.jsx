@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/SideMenu.css";
 
 const SideMenu = () => {
@@ -8,8 +9,8 @@ const SideMenu = () => {
       <ul className="side-menu">
         {menuItems.map((item, i) => (
           <li key={i} style={{ "--z-index": menuItems.length - i }}>
-            <a
-              href={
+            <Link
+              to={
                 i === 0
                   ? "/"
                   : item
@@ -19,7 +20,7 @@ const SideMenu = () => {
               }
             >
               {item}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
