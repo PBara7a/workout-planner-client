@@ -20,7 +20,7 @@
   display: grid;
   place-items: center;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .page-controls {
@@ -217,12 +217,6 @@
   outline: none;
 }
 
-@media screen and (max-width: 1950px) {
-  .exercises-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
-
 @media screen and (max-width: 1400px) {
   .workout-form h1 {
     margin: 0;
@@ -248,10 +242,6 @@
   .workout-form__btn {
     width: 75px;
     height: 40px;
-  }
-
-  .exercises-container {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   .exercises-filters select,
