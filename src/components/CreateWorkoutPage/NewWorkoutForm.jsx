@@ -1,4 +1,5 @@
 import { useState } from "react";
+import client from "../../utils/client";
 
 const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
   const defaultData = { name: "", target: "", notes: "" };
@@ -21,16 +22,17 @@ const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
     const data = { ...formData };
     data.exercises = workout.map((exercise) => exercise.id);
 
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    };
+    // const options = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    // };
 
     try {
-      fetch("http://localhost:4040/workout", options);
+      client.post("/workout", data);
+      // fetch("https://exercise-planner-api.herokuapp.com/workout", options);
     } catch (e) {
       console.error(e);
     }

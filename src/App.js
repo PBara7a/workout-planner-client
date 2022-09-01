@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import CreateWorkout from "./components/CreateWorkoutPage/CreateWorkout";
 import { ExercisesContextProvider } from "./components/contexts/ExercisesContext";
 import "./App.css";
-import MyWorkouts from "./components/MyWorkouts/MyWorkouts";
+import Workouts from "./components/WorkoutsPage/Workouts";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/my-workouts" element={<MyWorkouts />} />
+              <Route path="/workouts" element={<Workouts />} />
               <Route path="/create-workout" element={<CreateWorkout />} />
             </Routes>
           </main>

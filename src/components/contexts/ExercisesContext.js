@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import client from "../../utils/client";
 
 const ExercisesContext = React.createContext();
 
@@ -14,8 +15,7 @@ export const ExercisesContextProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:4040/data");
-      const data = await response.json();
+      const { data } = await client.get("/data");
 
       setExerciseData(data);
     })();

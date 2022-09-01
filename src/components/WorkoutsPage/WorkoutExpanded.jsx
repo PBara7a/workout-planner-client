@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../../styles/WorkoutCard.css";
+import client from "../../utils/client";
 
 const WorkoutCardExpanded = ({ workout, setOpenWorkout }) => {
   const [email, setEmail] = useState("");
@@ -10,16 +11,8 @@ const WorkoutCardExpanded = ({ workout, setOpenWorkout }) => {
 
     const data = { email, workout: workout.id };
 
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    };
-
     try {
-      fetch("http://localhost:4040/email", options);
+      client.post("/email", data);
     } catch (e) {
       console.error(e);
     }

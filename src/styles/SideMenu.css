@@ -11,17 +11,15 @@
   --main-bg__hover__shadow-darker: #1f5378;
 
   font-family: "Oswald", sans-serif;
+  position: relative;
+  transform: skewY(-15deg);
 }
 
 .side-menu__container {
+  /* position: sticky; */
   display: grid;
   place-items: center;
   height: 100vh;
-}
-
-.side-menu {
-  position: relative;
-  transform: skewY(-15deg);
 }
 
 .side-menu li {

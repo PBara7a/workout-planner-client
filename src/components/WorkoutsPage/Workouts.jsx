@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import WorkoutCard from "./WorkoutCard";
 import WorkoutCardExpanded from "./WorkoutExpanded";
+import client from "../../utils/client";
 
 const MyWorkoutsPage = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -8,8 +9,7 @@ const MyWorkoutsPage = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:4040/workout");
-      const data = await response.json();
+      const { data } = await client.get("/workout");
 
       setWorkouts(data.workouts);
     })();
@@ -17,7 +17,7 @@ const MyWorkoutsPage = () => {
 
   return (
     <section className="my-workouts-page">
-      <h1>My Workouts</h1>
+      <h1>Workouts</h1>
 
       <div className="workouts-container">
         {openWorkout ? (

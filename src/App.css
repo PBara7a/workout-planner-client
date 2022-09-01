@@ -52,7 +52,7 @@ footer {
   place-items: center;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  overflow: auto;
+  /* overflow: auto; */
   margin-bottom: 1.5rem;
 }
 
