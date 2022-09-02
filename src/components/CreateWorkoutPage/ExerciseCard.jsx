@@ -13,6 +13,8 @@ const ExerciseCard = ({ exercise, handleClick, deletable }) => {
     (equipment) => equipment.id === exercise.equipmentId
   ).name;
 
+  const isScrollNeeded = exercise.name.length > 20;
+
   return (
     <div className="card" onClick={() => handleClick(deletable, exercise)}>
       <div className="imgBox">
@@ -21,7 +23,11 @@ const ExerciseCard = ({ exercise, handleClick, deletable }) => {
           alt="Exercise demo"
           className="card__image"
         />
-        <h3>{exercise.name.toUpperCase()}</h3>
+        <div>
+          <span className={isScrollNeeded ? "scroll-left" : ""}>
+            {exercise.name.toUpperCase()}
+          </span>
+        </div>
       </div>
       <div className="content">
         <h4>Target:</h4>

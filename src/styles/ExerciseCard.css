@@ -60,9 +60,39 @@
   max-width: 50%;
 }
 
-.card .imgBox h3 {
-  position: relative;
+.card .imgBox span {
   color: var(--blue-bg);
+  font-weight: 600;
+}
+
+.scroll-left {
+  position: absolute;
+  top: 101px;
+  width: max-content;
+  word-wrap: none;
+
+  /* Apply animation to this element */
+  -moz-animation: scroll-left 7s linear infinite;
+  -webkit-animation: scroll-left 7s linear infinite;
+  animation: scroll-left 8s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(-30%); /* Browser bug fix */
+    -webkit-transform: translateX(-30%); /* Browser bug fix */
+    transform: translateX(-30%);
+  }
+  50% {
+    -moz-transform: translateX(-80%); /* Browser bug fix */
+    -webkit-transform: translateX(-80%); /* Browser bug fix */
+    transform: translateX(-80%);
+  }
+  100% {
+    -moz-transform: translateX(-30%); /* Browser bug fix */
+    -webkit-transform: translateX(-30%); /* Browser bug fix */
+    transform: translateX(-30%);
+  }
 }
 
 .card .content {
