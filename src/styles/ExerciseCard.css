@@ -67,7 +67,7 @@
 
 .scroll-left {
   position: absolute;
-  top: 101px;
+  top: 75%;
   width: max-content;
   word-wrap: none;
 
