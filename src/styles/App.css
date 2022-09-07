@@ -35,13 +35,32 @@ footer {
   bottom: 0;
 }
 
-.my-workouts-page {
+.main-header {
+  position: fixed;
+  top: 0;
+  justify-self: flex-end;
+}
+
+.main-header__log-in-link {
+  color: #999;
+  text-decoration: none;
+}
+
+.main-header__log-in-link:hover {
+  color: #000;
+}
+
+.main-header__log-in-link:active {
+  color: #33a3ee;
+}
+
+.workouts-page {
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100%;
 }
 
-.my-workouts-page h1 {
+.workouts-page h1 {
   font-size: 2rem;
   margin-top: 3rem;
 }
