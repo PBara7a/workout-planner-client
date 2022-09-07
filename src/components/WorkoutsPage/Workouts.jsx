@@ -8,7 +8,7 @@ const MyWorkoutsPage = () => {
   const { workouts } = useExercises();
 
   return (
-    <section className="my-workouts-page">
+    <section className="workouts-page">
       <h1>Workouts</h1>
 
       <div className="workouts-container">

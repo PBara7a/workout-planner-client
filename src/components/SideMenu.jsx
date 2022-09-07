@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/SideMenu.css";
 
 const SideMenu = () => {
-  const menuItems = ["Home", "Workouts", "Create Workout"];
+  const menuItems = ["Home", "Workouts", "My Collection", "Create Workout"];
 
   return (
     <nav className="side-menu__container">

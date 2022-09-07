@@ -5,7 +5,7 @@ const UserContext = React.createContext();
 export const useUser = () => useContext(UserContext);
 
 export const UserContextProvider = ({ children }) => {
-  const [userId, setUserId] = useState();
+  const [userId, setUserId] = useState(null);
 
   const isLoggedIn = Boolean(userId);
 

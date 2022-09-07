@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 
 const NewWorkoutForm = ({
   workout,
@@ -8,6 +10,8 @@ const NewWorkoutForm = ({
 }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
+  const { isLoggedIn } = useUser();
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -23,12 +27,16 @@ const NewWorkoutForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const data = { ...formData };
-    data.exercises = workout.map((exercise) => exercise.id);
+    if (!isLoggedIn) {
+      navigate("../auth-required", { replace: true });
+    } else {
+      const data = { ...formData };
+      data.exercises = workout.map((exercise) => exercise.id);
 
-    createWorkout(data);
+      createWorkout(data);
 
-    handleReset(e);
+      handleReset(e);
+    }
   };
 
   return (

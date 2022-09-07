@@ -74,6 +74,14 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.auth-required-page h1 {
+  color: #ff568f;
+}
+
+.auth-required-page p {
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 1950px) {
   .workouts-container {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
