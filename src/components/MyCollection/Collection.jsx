@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkoutCard from "../WorkoutsPage/WorkoutCard";
 import WorkoutCardExpanded from "../WorkoutsPage/WorkoutExpanded";
-import { useExercises } from "../contexts/ExercisesContext";
 import { useUser } from "../contexts/UserContext";
 
 const MyCollectionPage = () => {
   const [openWorkout, setOpenWorkout] = useState(null);
-  const { collection } = useExercises();
-  const { userId, isLoggedIn } = useUser();
+  const { isLoggedIn, collection } = useUser();
   let navigate = useNavigate();
 
   useEffect(() => {

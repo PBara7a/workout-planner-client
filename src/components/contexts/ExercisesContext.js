@@ -12,7 +12,6 @@ export const ExercisesContextProvider = ({ children }) => {
     bodyparts: [],
     equipments: [],
     workouts: [],
-    collection: [],
   });
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export const ExercisesContextProvider = ({ children }) => {
       } = await client.get("/workout");
 
       data.workouts = workouts.filter((workout) => workout.userId === 1);
-      data.collection = workouts; // Change this later to show the collection of the logged in user
 
       setExerciseData(data);
     })();
