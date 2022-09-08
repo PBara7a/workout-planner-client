@@ -19,30 +19,16 @@ export const ExercisesContextProvider = ({ children }) => {
       const { data } = await client.get("/data");
       const {
         data: { workouts },
-      } = await client.get("/workout");
+      } = await client.get("/workout/1");
 
-      data.workouts = workouts.filter((workout) => workout.userId === 1);
+      data.workouts = workouts;
 
       setExerciseData(data);
     })();
   }, []);
 
-  const createWorkout = async (data) => {
-    try {
-      await client.post("/workout", data);
-    } catch (e) {
-      console.error(e);
-    }
-
-    const {
-      data: { workouts },
-    } = await client.get("/workout");
-
-    setExerciseData({ ...exerciseData, workouts });
-  };
-
   return (
-    <ExercisesContext.Provider value={{ ...exerciseData, createWorkout }}>
+    <ExercisesContext.Provider value={{ ...exerciseData }}>
       {children}
     </ExercisesContext.Provider>
   );

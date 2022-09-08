@@ -83,7 +83,8 @@
   margin: 1rem 0;
 }
 
-.workout-form__inp {
+.workout-form__inp,
+.new-workout-exercises {
   width: 100%;
   border: none;
   padding: 16px 12px 0 12px;
@@ -96,15 +97,7 @@
 }
 
 .workout-form__inputs-container textarea {
-  width: 100%;
-  border: none;
-  padding: 16px 12px 0 12px;
   height: 5rem;
-  font-size: 1rem;
-  background: rgba(0, 0, 0, 0.02);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  color: #3e3f46;
-  transition: all 0.15s ease;
   resize: none;
 }
 
@@ -120,13 +113,8 @@
 }
 
 .new-workout-exercises {
-  width: 100%;
-  padding: 16px 12px;
+  padding-bottom: 12px;
   height: 5rem;
-  font-size: 1rem;
-  background: rgba(0, 0, 0, 0.02);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  transition: all 0.15s ease;
   overflow-x: auto;
 }
 
@@ -138,7 +126,7 @@
 .workout-form__intructions {
   color: rgba(0, 0, 0, 0.5);
   text-align: left;
-  margin-top: -0.5rem;
+  font-size: 0.8rem;
 }
 
 .new-workout-exercises ul {
@@ -195,15 +183,12 @@
     margin: 0;
   }
 
-  .workout-form__inp .workout-form__label {
+  .workout-form__inp {
     font-size: 0.8rem;
-  }
-
-  .workout-form__inp input {
     height: 2rem;
   }
 
-  .workout-form__inp textarea {
+  .workout-form__inputs-container textarea {
     height: 3rem;
   }
 

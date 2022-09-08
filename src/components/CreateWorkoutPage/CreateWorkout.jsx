@@ -14,8 +14,7 @@ const defaultFilters = {
 };
 
 const CreateWorkout = () => {
-  const { exercises, bodyparts, targets, equipments, createWorkout } =
-    useExercises();
+  const { exercises, bodyparts, targets, equipments } = useExercises();
   const [page, setPage] = useState(1);
   const [filters, setFilters] = useState(defaultFilters);
   const [workout, setWorkout] = useState([]);
@@ -133,7 +132,6 @@ const CreateWorkout = () => {
         workout={workout}
         resetWorkout={resetWorkout}
         removeExercise={removeExercise}
-        createWorkout={createWorkout}
       />
 
       <div className="exercises-container">

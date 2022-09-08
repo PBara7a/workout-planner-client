@@ -2,15 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
 
-const NewWorkoutForm = ({
-  workout,
-  resetWorkout,
-  removeExercise,
-  createWorkout,
-}) => {
+const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
-  const { userId, isLoggedIn } = useUser();
+  const { userId, isLoggedIn, createWorkout } = useUser();
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,7 +19,7 @@ const NewWorkoutForm = ({
     resetWorkout();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isLoggedIn) {

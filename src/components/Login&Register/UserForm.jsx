@@ -46,6 +46,8 @@ const UserForm = () => {
       const res = await client.post("/login", user);
 
       localStorage.setItem(process.env.REACT_APP_USER_TOKEN, res.data.token);
+      localStorage.setItem(process.env.REACT_APP_USER_ID, res.data.user.id);
+
       updateUserId(res.data.user.id);
     } catch (e) {
       console.error(e);
