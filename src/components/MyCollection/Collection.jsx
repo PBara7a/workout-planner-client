@@ -15,9 +15,19 @@ const MyCollectionPage = () => {
     }
   }, [isLoggedIn, navigate]);
 
+  const isCollectionEmpty = collection.length === 0;
+
   return (
     <>
-      {isLoggedIn && (
+      {isCollectionEmpty && (
+        <div className="collection-empty">
+          <h2>Oh! Still empty!</h2>
+          <div className="sad-face">
+            <img src="sad.png" alt="sad face" />
+          </div>
+        </div>
+      )}
+      {isLoggedIn && !isCollectionEmpty && (
         <section className="workouts-page">
           <h1>My Collection</h1>
 

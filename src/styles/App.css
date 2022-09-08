@@ -82,6 +82,15 @@ footer {
   font-size: 1.5rem;
 }
 
+.collection-empty h2 {
+  color: #ff568f;
+  margin-bottom: 1rem;
+}
+
+.collection-empty img {
+  height: 350px;
+}
+
 @media screen and (max-width: 1950px) {
   .workouts-container {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
