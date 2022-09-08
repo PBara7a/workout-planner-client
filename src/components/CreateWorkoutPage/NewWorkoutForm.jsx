@@ -10,7 +10,7 @@ const NewWorkoutForm = ({
 }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
-  const { isLoggedIn } = useUser();
+  const { userId, isLoggedIn } = useUser();
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const NewWorkoutForm = ({
     if (!isLoggedIn) {
       navigate("../auth-required", { replace: true });
     } else {
-      const data = { ...formData };
+      const data = { ...formData, userId };
       data.exercises = workout.map((exercise) => exercise.id);
 
       createWorkout(data);
@@ -44,27 +44,23 @@ const NewWorkoutForm = ({
       <h1>Create workout</h1>
 
       <div className="workout-form__inputs-container">
-        <label htmlFor="name" className="workout-form__inp">
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <span className="workout-form__label">Workout name</span>
-          <span className="workout-form__focus-bg"></span>
-        </label>
+        <input
+          className="workout-form__inp"
+          type="text"
+          id="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Name"
+        />
 
-        <label htmlFor="target" className="workout-form__inp">
-          <input
-            type="text"
-            id="target"
-            value={formData.target}
-            onChange={handleChange}
-          />
-          <span className="workout-form__label">Workout target</span>
-          <span className="workout-form__focus-bg"></span>
-        </label>
+        <input
+          className="workout-form__inp"
+          type="text"
+          id="target"
+          value={formData.target}
+          onChange={handleChange}
+          placeholder="Target"
+        />
       </div>
 
       <div className="workout-form__inputs-container">
@@ -89,17 +85,15 @@ const NewWorkoutForm = ({
           </ul>
         </div>
 
-        <label htmlFor="notes" className="workout-form__inp">
-          <textarea
-            id="notes"
-            rows="4"
-            cols="50"
-            value={formData.notes}
-            onChange={handleChange}
-          />
-          <span className="workout-form__label">Notes</span>
-          <span className="workout-form__focus-bg"></span>
-        </label>
+        <textarea
+          className="workout-form__inp"
+          id="notes"
+          rows="4"
+          cols="50"
+          value={formData.notes}
+          onChange={handleChange}
+          placeholder="Notes"
+        />
       </div>
 
       <button className="workout-form__btn" onClick={handleReset}>

@@ -84,25 +84,6 @@
 }
 
 .workout-form__inp {
-  position: relative;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.workout-form__inp .workout-form__label {
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease;
-  pointer-events: none;
-}
-
-.workout-form__inp input {
   width: 100%;
   border: none;
   padding: 16px 12px 0 12px;
@@ -114,7 +95,7 @@
   transition: all 0.15s ease;
 }
 
-.workout-form__inp textarea {
+.workout-form__inputs-container textarea {
   width: 100%;
   border: none;
   padding: 16px 12px 0 12px;
@@ -127,31 +108,15 @@
   resize: none;
 }
 
-.workout-form__inp input:hover,
-.workout-form__inp textarea:hover {
+.workout-form__inp:hover {
   background: rgba(0, 0, 0, 0.04);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
-.workout-form__inp input:focus,
-.workout-form__inp textarea:focus {
+.workout-form__inp:focus {
   background: rgba(0, 0, 0, 0.05);
   outline: none;
   box-shadow: inset 0 -2px 0 #33a3ee;
-}
-
-.workout-form__inp input:focus + .workout-form__label,
-.workout-form__inp textarea:focus + .workout-form__label {
-  color: #33a3ee;
-  transform: translate3d(0, -12px, 0) scale(0.75);
-}
-
-.workout-form__inp
-  input:focus
-  + .workout-form__label
-  + .workout-form__focus-bg {
-  transform: scaleX(1);
-  transition: all 0.1s ease;
 }
 
 .new-workout-exercises {
