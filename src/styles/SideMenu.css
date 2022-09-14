@@ -22,7 +22,12 @@
   transition: 0.5s;
 }
 
-.side-menu li:hover {
+#dark .side-menu li {
+  background: var(--shadow-grey-dark);
+}
+
+.side-menu li:hover,
+#dark .side-menu li:hover {
   background: var(--highlight-blue);
   transform: translateX(20px);
 }
@@ -40,7 +45,12 @@
   transition: 0.5s;
 }
 
-.side-menu li:hover::before {
+#dark .side-menu li::before {
+  background: var(--shadow-grey-dark-max);
+}
+
+.side-menu li:hover::before,
+#dark .side-menu li:hover::before {
   background: var(--shadow-blue-darker);
 }
 
@@ -68,6 +78,10 @@
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   transition: 0.5s;
+}
+
+#dark .side-menu li a {
+  color: var(--text-4);
 }
 
 .side-menu li:hover a {

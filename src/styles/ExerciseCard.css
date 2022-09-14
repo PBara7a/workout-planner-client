@@ -33,7 +33,12 @@
   transform-origin: left;
   transform: skewY(45deg);
   transition: 0.5s;
-  border-bottom: 165px solid var(--shadow-blue);
+  border-bottom: 165px solid var(--shadow-blue-darker);
+}
+
+#dark .card::before,
+#dark .card::after {
+  background: var(--shadow-grey-dark);
 }
 
 .card:hover {
@@ -57,7 +62,7 @@
 }
 
 .card .imgBox span {
-  color: var(--highlight-blue);
+  color: var(--shadow-blue);
   font-weight: 600;
 }
 
@@ -96,8 +101,8 @@
   width: 100%;
   height: 55%;
   padding: 1rem;
-  color: #fff;
-  background: var(--highlight-blue);
+  color: var(--text-5);
+  background: var(--shadow-blue);
   text-align: center;
 }
 
@@ -129,7 +134,7 @@
   }
 
   .card::after {
-    border-bottom: 124px solid var(--shadow-blue);
+    border-bottom: 124px solid var(--shadow-blue-darker);
   }
 
   .card .imgBox h3 {

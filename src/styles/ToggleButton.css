@@ -43,7 +43,7 @@
 }
 
 input:checked + .slider {
-  background-color: var(--highlight-blue);
+  background-color: var(--highlight-pink);
 }
 
 input:focus + .slider {

@@ -40,9 +40,17 @@
   border: none;
 }
 
+#dark .page-controls button {
+  background: var(--shadow-grey-dark);
+}
+
 .page-controls button:hover {
   color: var(--text-5);
   background: var(--highlight-blue);
+}
+
+#dark .page-controls button:hover {
+  background: var(--highlight-pink);
 }
 
 .page-controls input {
@@ -72,8 +80,18 @@
   min-width: 180px;
 }
 
+#dark .exercises-filters select,
+#dark .exercises-filters input {
+  color: var(--text-4);
+  background: var(--shadow-grey-dark);
+}
+
 .workout-form h1 {
   margin: 2rem 0;
+}
+
+#dark .workout-form h1 {
+  color: var(--text-4);
 }
 
 .workout-form__inputs-container {
@@ -96,6 +114,13 @@
   transition: all 0.15s ease;
 }
 
+#dark .workout-form__inp,
+#dark .new-workout-exercises {
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: var(--text-4);
+}
+
 .workout-form__inputs-container textarea {
   height: 5rem;
   resize: none;
@@ -106,10 +131,18 @@
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
+#dark .workout-form__inp:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .workout-form__inp:focus {
   background: rgba(0, 0, 0, 0.05);
   outline: none;
   box-shadow: inset 0 -2px 0 var(--highlight-blue);
+}
+
+#dark .workout-form__inp:focus {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .new-workout-exercises {
@@ -123,9 +156,17 @@
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
+#dark .new-workout-exercises:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .workout-form__intructions {
   color: rgba(0, 0, 0, 0.5);
   text-align: left;
+}
+
+#dark .workout-form__intructions {
+  color: var(--text-2);
 }
 
 .new-workout-exercises ul {
@@ -160,10 +201,24 @@
   transition: 500ms ease-in-out;
 }
 
+#dark .workout-form__btn {
+  color: var(--text-4);
+  background: var(--shadow-grey-dark);
+  border: 2px solid var(--highlight-blue);
+  box-shadow: 5px 5px 0 var(--highlight-blue), -5px -5px 0 var(--highlight-blue),
+    -5px 5px 0 var(--highlight-blue), 5px -5px 0 var(--highlight-blue);
+}
+
 .workout-form__btn:hover {
   box-shadow: 20px 5px 0 var(--secondary-bg-dark),
     -20px -5px 0 var(--secondary-bg-dark);
   color: var(--highlight-blue);
+}
+
+#dark .workout-form__btn:hover {
+  box-shadow: 20px 5px 0 var(--highlight-blue),
+    -20px -5px 0 var(--highlight-blue);
+  background: var(--secondary-bg-dark);
 }
 
 .workout-form__btn:focus {

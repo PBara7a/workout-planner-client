@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+#dark.App {
+  background: var(--secondary-bg-dark);
+  color: var(--text-5);
+}
+
 .main-layout {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -39,6 +44,10 @@ footer {
   bottom: 0;
 }
 
+#dark footer {
+  color: var(--text-3);
+}
+
 .main-header {
   position: fixed;
   top: 0;
@@ -52,6 +61,10 @@ footer {
 
 .main-header__log-in-link:hover {
   color: var(--text-1);
+}
+
+#dark .main-header__log-in-link:hover {
+  color: var(--text-5);
 }
 
 .main-header__log-in-link:active {
