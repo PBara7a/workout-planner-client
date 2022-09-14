@@ -16,6 +16,6 @@ The server can be found [here](https://github.com/PBara7a/workout-planner).
 App built with React, Node.js, Express, Prisma and PostgreSQL.
 
 - SPA built to plan and save my workouts.
-- Authentication implemented from scratch.
+- Authentication implemented from scratch, with password validation.
 - Client retrieves and sends data through an Express API.
 - Can send workouts by email via SendGrid API.
