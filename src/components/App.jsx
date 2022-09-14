@@ -1,7 +1,7 @@
+import { createContext, useState, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ExercisesContextProvider } from "./contexts/ExercisesContext";
 import { UserContextProvider } from "./contexts/UserContext";
-import { ThemeContextProvider } from "./contexts/ThemeContext";
 import Footer from "./Footer";
 import SideMenu from "./SideMenu";
 import Home from "./Home";
@@ -13,12 +13,22 @@ import UserForm from "./Login&Register/UserForm";
 import PleaseLogInPage from "./PleaseLogInPage";
 import "../styles/App.css";
 
+const ThemeContext = createContext();
+
+export const useTheme = () => useContext(ThemeContext);
+
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme((curTheme) => (curTheme === "light" ? "dark" : "light"));
+  };
+
   return (
     <ExercisesContextProvider>
       <UserContextProvider>
-        <ThemeContextProvider>
-          <div className="App">
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <div className="App" id={theme}>
             <div className="main-layout">
               <SideMenu />
               <main>
@@ -35,7 +45,7 @@ function App() {
             </div>
             <Footer />
           </div>
-        </ThemeContextProvider>
+        </ThemeContext.Provider>
       </UserContextProvider>
     </ExercisesContextProvider>
   );
