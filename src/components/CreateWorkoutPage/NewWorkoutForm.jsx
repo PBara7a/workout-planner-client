@@ -5,7 +5,7 @@ import { useUser } from "../contexts/UserContext";
 const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
-  const { userId, isLoggedIn, createWorkout } = useUser();
+  const { user, isLoggedIn, createWorkout } = useUser();
   let navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,7 +25,7 @@ const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
     if (!isLoggedIn) {
       navigate("../auth-required", { replace: true });
     } else {
-      const data = { ...formData, userId };
+      const data = { ...formData, user_id: user.id };
       data.exercises = workout.map((exercise) => exercise.id);
 
       createWorkout(data);

@@ -2,12 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./contexts/UserContext";
 
 const Header = () => {
-  const { isLoggedIn, updateUserId } = useUser();
+  const { isLoggedIn, setUser } = useUser();
   let navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
-    updateUserId(null);
+    localStorage.removeItem(process.env.REACT_APP_USER_ID);
+    setUser(null);
 
     navigate("../", { replace: true });
   };

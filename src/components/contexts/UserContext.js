@@ -1,48 +1,52 @@
 import React, { useState, useContext, useEffect } from "react";
 import client from "../../utils/client";
 
-const id = Number(localStorage.getItem(process.env.REACT_APP_USER_ID));
+const idInLocalStorage = Number(
+  localStorage.getItem(process.env.REACT_APP_USER_ID)
+);
 
 const UserContext = React.createContext();
 
 export const useUser = () => useContext(UserContext);
 
 export const UserContextProvider = ({ children }) => {
-  const [userId, setUserId] = useState(id);
-  const [collection, setCollection] = useState([]);
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    if (userId) {
+    if (idInLocalStorage) {
       (async () => {
         const {
-          data: { workouts },
-        } = await client.get(`/workout/${userId}`);
-        setCollection(workouts);
+          data: { data },
+        } = await client.get(`/user/${idInLocalStorage}`);
+
+        setUser(data.user);
       })();
     }
-  }, [userId]);
+  }, [idInLocalStorage]);
+
+  const collection = user ? user.workouts : [];
 
   const createWorkout = async (data) => {
     try {
-      await client.post("/workout", data);
+      const {
+        data: {
+          data: { workout },
+        },
+      } = await client.post("/workout", data);
+
+      collection.push(workout);
     } catch (e) {
       console.error(e);
     }
-
-    const {
-      data: { workouts },
-    } = await client.get(`/workout/${userId}`);
-
-    setCollection(workouts);
   };
 
-  const isLoggedIn = Boolean(userId);
-
-  const updateUserId = async (userId) => setUserId(userId);
+  const isLoggedIn = Boolean(
+    localStorage.getItem(process.env.REACT_APP_USER_ID)
+  );
 
   const value = {
-    userId,
-    updateUserId,
+    user,
+    setUser,
     isLoggedIn,
     collection,
     createWorkout,

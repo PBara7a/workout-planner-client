@@ -8,7 +8,7 @@ const UserForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [isLoginForm, setIsLoginForm] = useState(true);
-  const { updateUserId } = useUser();
+  const { setUser } = useUser();
   const user = {
     username: formData.username,
     password: formData.password,
@@ -43,12 +43,14 @@ const UserForm = () => {
 
   const login = async () => {
     try {
-      const res = await client.post("/login", user);
+      const {
+        data: { data },
+      } = await client.post("/login", user);
 
-      localStorage.setItem(process.env.REACT_APP_USER_TOKEN, res.data.token);
-      localStorage.setItem(process.env.REACT_APP_USER_ID, res.data.user.id);
+      localStorage.setItem(process.env.REACT_APP_USER_TOKEN, data.token);
+      localStorage.setItem(process.env.REACT_APP_USER_ID, data.user.id);
 
-      updateUserId(res.data.user.id);
+      setUser(data.user);
     } catch (e) {
       console.error(e);
     }
