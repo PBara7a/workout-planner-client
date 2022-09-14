@@ -8,22 +8,43 @@ export const useExercises = () => useContext(ExercisesContext);
 export const ExercisesContextProvider = ({ children }) => {
   const [exerciseData, setExerciseData] = useState({
     exercises: [],
-    targets: [],
-    bodyparts: [],
-    equipments: [],
     workouts: [],
+    bodyparts: [],
+    targets: [],
+    equipments: [],
   });
 
   useEffect(() => {
     (async () => {
-      const { data } = await client.get("/data");
+      const {
+        data: {
+          data: { exercises },
+        },
+      } = await client.get("/exercise");
+
+      const {
+        data: {
+          data: { bodyparts },
+        },
+      } = await client.get("/body/parts");
+
+      const {
+        data: {
+          data: { targets },
+        },
+      } = await client.get("/body/targets");
+
+      const {
+        data: {
+          data: { equipments },
+        },
+      } = await client.get("/equipment");
+
       const {
         data: { workouts },
       } = await client.get("/workout/1");
 
-      data.workouts = workouts;
-
-      setExerciseData(data);
+      setExerciseData({ exercises, workouts, bodyparts, targets, equipments });
     })();
   }, []);
 

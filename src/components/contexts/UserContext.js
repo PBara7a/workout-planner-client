@@ -22,7 +22,7 @@ export const UserContextProvider = ({ children }) => {
         setUser(data.user);
       })();
     }
-  }, [idInLocalStorage]);
+  }, []);
 
   const collection = user ? user.workouts : [];
 
