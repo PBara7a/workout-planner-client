@@ -26,6 +26,8 @@ const Header = () => {
           Log out
         </Link>
       )}
+
+      <button>Theme Toggle</button>
     </header>
   );
 };

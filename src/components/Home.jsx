@@ -6,13 +6,11 @@ const Home = () => {
   const [quote] = useState(quotes[randIndex]);
 
   return (
-    <header>
-      <blockquote>
-        <span className="quote">&ldquo;{quote.q}&rdquo;</span>
-        <br />
-        <strong> &mdash; {quote.a}</strong>
-      </blockquote>
-    </header>
+    <blockquote>
+      <span className="quote">&ldquo;{quote.q}&rdquo;</span>
+      <br />
+      <strong> &mdash; {quote.a}</strong>
+    </blockquote>
   );
 };
 

@@ -16,7 +16,7 @@
   left: 20px;
   right: 20px;
   bottom: 20px;
-  background: #ebf5fc;
+  background: var(--secondary-bg-light);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   display: grid;
@@ -56,7 +56,7 @@
 .workout-card .box .content h3,
 .workout-card-expanded .box .content h3 {
   font-size: 1.8rem;
-  color: #777;
+  color: var(--text-3);
   z-index: 1;
   transition: 0.5s;
 }
@@ -66,10 +66,10 @@
   position: relative;
   display: inline-block;
   padding: 0.2rem 1.2rem;
-  background: #00c7ff;
+  background: var(--highlight-blue);
   margin-top: 1rem;
   border-radius: 20px;
-  color: #fff;
+  color: var(--text-5);
   text-decoration: none;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border: none;
@@ -83,7 +83,7 @@
 
 .workout-card:hover .box .content button,
 .workout-card-expanded .box .content button:hover {
-  background: #ff568f;
+  background: var(--highlight-pink);
 }
 
 .workout-card-expanded {
@@ -98,7 +98,7 @@
 }
 
 .workout-card-expanded .box .content p {
-  color: #777;
+  color: var(--text-2);
 }
 
 .workout-card-expanded .box .content .exercise-demos {
@@ -119,13 +119,13 @@
   text-align: center;
   min-width: 40%;
   outline: none;
-  border: 2px solid #777;
+  border: 2px solid var(--text-2);
   border-radius: 25px;
-  color: #777;
+  color: var(--text-2);
 }
 
 .workout-card-expanded .box .content input:hover {
-  border: 2px solid #00c7ff;
+  border: 2px solid var(--highlight-blue);
 }
 
 @media screen and (max-width: 1400px) {

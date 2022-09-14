@@ -1,15 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,700");
 
 .side-menu {
-  --text-color: #999;
-  --text-color__hover: #fff;
-  --main-bg: #3e3f46;
-  --main-bg__shadow: #35383e;
-  --main-bg__shadow-darker: #2e3133;
-  --main-bg__hover: #33a3ee;
-  --main-bg__hover__shadow: #2982b9;
-  --main-bg__hover__shadow-darker: #1f5378;
-
   font-family: "Oswald", sans-serif;
   position: relative;
   transform: skewY(-15deg);
@@ -25,14 +16,14 @@
   position: relative;
   list-style: none;
   width: 200px;
-  background: var(--main-bg);
+  background: var(--secondary-bg-dark);
   padding: 15px;
   z-index: var(--z-index);
   transition: 0.5s;
 }
 
 .side-menu li:hover {
-  background: var(--main-bg__hover);
+  background: var(--highlight-blue);
   transform: translateX(20px);
 }
 
@@ -43,14 +34,14 @@
   left: -40px;
   width: 40px;
   height: 100%;
-  background: var(--main-bg__shadow-darker);
+  background: var(--shadow-grey-dark);
   transform-origin: right;
   transform: skewY(45deg);
   transition: 0.5s;
 }
 
 .side-menu li:hover::before {
-  background: var(--main-bg__hover__shadow-darker);
+  background: var(--shadow-blue-darker);
 }
 
 .side-menu li::after {
@@ -60,19 +51,19 @@
   left: 0;
   width: 100%;
   height: 40px;
-  background: var(--main-bg__shadow);
+  background: var(--shadow-grey);
   transform-origin: bottom;
   transform: skewX(45deg);
   transition: 0.5s;
 }
 
 .side-menu li:hover::after {
-  background: var(--main-bg__hover__shadow);
+  background: var(--shadow-blue);
 }
 
 .side-menu li a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--text-3);
   display: block;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
@@ -80,7 +71,7 @@
 }
 
 .side-menu li:hover a {
-  color: var(--text-color__hover);
+  color: var(--text-5);
 }
 
 .side-menu li:last-child::after {

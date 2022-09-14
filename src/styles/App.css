@@ -23,14 +23,14 @@ main {
   padding: 0 10%;
 }
 
-main header .quote {
+main .quote {
   font-size: 1.5rem;
 }
 
 footer {
   width: 100%;
   margin: 0.2rem;
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--text-4);
   position: fixed;
   bottom: 0;
 }
@@ -42,16 +42,16 @@ footer {
 }
 
 .main-header__log-in-link {
-  color: #999;
+  color: var(--text-3);
   text-decoration: none;
 }
 
 .main-header__log-in-link:hover {
-  color: #000;
+  color: var(--text-1);
 }
 
 .main-header__log-in-link:active {
-  color: #33a3ee;
+  color: var(--highlight-blue);
 }
 
 .workouts-page {
@@ -75,7 +75,7 @@ footer {
 }
 
 .auth-required-page h1 {
-  color: #ff568f;
+  color: var(--highlight-pink);
 }
 
 .auth-required-page p {
@@ -83,7 +83,7 @@ footer {
 }
 
 .collection-empty h2 {
-  color: #ff568f;
+  color: var(--highlight-pink);
   margin-bottom: 1rem;
 }
 
