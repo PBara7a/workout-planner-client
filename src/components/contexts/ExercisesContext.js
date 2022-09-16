@@ -41,8 +41,12 @@ export const ExercisesContextProvider = ({ children }) => {
       } = await client.get("/equipment");
 
       const {
-        data: { workouts },
-      } = await client.get("/workout/1");
+        data: {
+          data: {
+            user: { workouts },
+          },
+        },
+      } = await client.get("/user/1");
 
       setExerciseData({ exercises, workouts, bodyparts, targets, equipments });
     })();
