@@ -144,17 +144,14 @@ const Header = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton sx={{ p: 0 }} onClick={toggleTheme}>
+            <IconButton sx={{ mr: 4 }} onClick={toggleTheme}>
               {theme === "light" ? (
                 <DarkModeOutlinedIcon
-                  sx={{ color: "#fff", mr: 4 }}
+                  sx={{ color: "#fff" }}
                   alt="Toggle theme"
                 />
               ) : (
-                <DarkModeIcon
-                  sx={{ color: "#fff", mr: 4 }}
-                  alt="Toggle theme"
-                />
+                <DarkModeIcon sx={{ color: "#fff" }} alt="Toggle theme" />
               )}
             </IconButton>
             <IconButton onClick={handleLoginLogout}>

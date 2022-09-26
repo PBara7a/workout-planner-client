@@ -4,7 +4,7 @@ import { UserContextProvider } from "./contexts/UserContext";
 import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
-import UserForm from "./Login&Register/UserForm";
+import SignInForm from "./Login&Register/SignInForm";
 import "../styles/App.css";
 
 const ThemeContext = createContext();
@@ -27,7 +27,7 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<UserForm />} />
+              <Route path="/login" element={<SignInForm />} />
             </Routes>
           </div>
         </ThemeContext.Provider>
