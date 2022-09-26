@@ -36,7 +36,10 @@
   border-bottom: 165px solid var(--shadow-blue-darker);
 }
 
-#dark .card::before,
+#dark .card::before {
+  background: var(--shadow-grey);
+}
+
 #dark .card::after {
   background: var(--shadow-grey-dark);
 }

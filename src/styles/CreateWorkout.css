@@ -81,17 +81,14 @@
 }
 
 #dark .exercises-filters select,
-#dark .exercises-filters input {
+#dark .exercises-filters input,
+#dark .exercises-filters input::placeholder {
   color: var(--text-4);
   background: var(--shadow-grey-dark);
 }
 
 .workout-form h1 {
   margin: 2rem 0;
-}
-
-#dark .workout-form h1 {
-  color: var(--text-4);
 }
 
 .workout-form__inputs-container {
@@ -135,6 +132,10 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+#dark .workout-form__inp::placeholder {
+  color: var(--text-4);
+}
+
 .workout-form__inp:focus {
   background: rgba(0, 0, 0, 0.05);
   outline: none;
@@ -166,7 +167,7 @@
 }
 
 #dark .workout-form__intructions {
-  color: var(--text-2);
+  color: var(--text-4);
 }
 
 .new-workout-exercises ul {
