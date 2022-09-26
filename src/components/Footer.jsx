@@ -1,13 +1,29 @@
-import ToggleButton from "./ToggleButton";
+import { Typography, Link } from "@mui/material";
+import { useTheme } from "./App";
 
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const { theme } = useTheme();
 
   return (
-    <footer className="footer">
-      <div className="spacer"></div>
-      <div>Copyright © {year}</div>
-      <ToggleButton />
+    <footer>
+      <Typography
+        variant="body2"
+        color={theme === "light" ? "text.secondary" : "common.white"}
+        align="center"
+        sx={{ position: "f" }}
+      >
+        {"Copyright © "}
+        <Link
+          color="inherit"
+          href="https://pbara7a.github.io/portfolio/"
+          target="_blank"
+          sx={{ textDecoration: "none" }}
+        >
+          Paulo Barata
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
     </footer>
   );
 };

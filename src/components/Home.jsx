@@ -20,7 +20,7 @@ const Home = () => {
           <Typography align="center" sx={{ fontSize: "1.5rem" }}>
             <span className="quote">&ldquo;{quote.q}&rdquo;</span>
           </Typography>
-          <Typography align="end" sx={{ mr: 10 }}>
+          <Typography align="right" sx={{ mr: 10 }}>
             <strong> &mdash; {quote.a}</strong>
           </Typography>
         </blockquote>

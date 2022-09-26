@@ -6,6 +6,7 @@ import Header from "./Header";
 import Home from "./Home";
 import SignInForm from "./Login&Register/SignInForm";
 import "../styles/App.css";
+import Footer from "./Footer";
 
 const ThemeContext = createContext();
 
@@ -29,6 +30,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<SignInForm />} />
             </Routes>
+
+            <Footer />
           </div>
         </ThemeContext.Provider>
       </UserContextProvider>
