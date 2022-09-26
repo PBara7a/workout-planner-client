@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       color={theme === "light" ? "primary" : "secondary"}
     >
       <Container maxWidth="xl">

@@ -8,6 +8,24 @@
 }
 
 .App {
+  height: 100vh;
+  background: #ddd;
+}
+
+#dark.App {
+  height: 100vh;
+  background: #222;
+}
+
+#home {
+  color: #000;
+}
+
+#dark #home {
+  color: #fff;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -119,4 +137,4 @@ footer {
   .my-workouts-page h1 {
     margin: 0.9rem 0;
   }
-}
+} */

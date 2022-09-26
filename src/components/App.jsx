@@ -1,16 +1,10 @@
 import { createContext, useState, useContext } from "react";
-import { Routes, Route } from "react-router-dom";
 import { ExercisesContextProvider } from "./contexts/ExercisesContext";
 import { UserContextProvider } from "./contexts/UserContext";
-import Footer from "./Footer";
-import SideMenu from "./SideMenu";
-import Home from "./Home";
-import CreateWorkout from "./CreateWorkoutPage/CreateWorkout";
-import Workouts from "./WorkoutsPage/Workouts";
-import Collection from "./MyCollection/Collection";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
+import Home from "./Home";
 import UserForm from "./Login&Register/UserForm";
-import PleaseLogInPage from "./PleaseLogInPage";
 import "../styles/App.css";
 
 const ThemeContext = createContext();
@@ -29,21 +23,12 @@ function App() {
       <UserContextProvider>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <div className="App" id={theme}>
-            <div className="main-layout">
-              <SideMenu />
-              <main>
-                <Header />
-                <Routes>
-                  <Route path="/login" element={<UserForm />} />
-                  <Route path="/" element={<Home />} />
-                  <Route path="/workouts" element={<Workouts />} />
-                  <Route path="/my-collection" element={<Collection />} />
-                  <Route path="/create-workout" element={<CreateWorkout />} />
-                  <Route path="/auth-required" element={<PleaseLogInPage />} />
-                </Routes>
-              </main>
-            </div>
-            <Footer />
+            <Header />
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<UserForm />} />
+            </Routes>
           </div>
         </ThemeContext.Provider>
       </UserContextProvider>
