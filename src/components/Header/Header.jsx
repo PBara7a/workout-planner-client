@@ -5,7 +5,7 @@ import { useTheme } from "../App";
 import MenuIcon from "@mui/icons-material/Menu";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import {
@@ -18,6 +18,7 @@ import {
   Container,
   MenuItem,
   Button,
+  Tooltip,
 } from "@mui/material";
 
 const pages = ["Home", "Workouts", "Collection", "Create Workout"];
@@ -33,7 +34,7 @@ const Header = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (e) => {
+  const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
@@ -91,6 +92,7 @@ const Header = () => {
                             .join("-")
                     }
                     style={{ textDecoration: "none", color: "inherit" }}
+                    onClick={handleCloseNavMenu}
                   >
                     <Typography textAlign="center">{page}</Typography>
                   </Link>
@@ -146,23 +148,25 @@ const Header = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton sx={{ mr: 4 }} onClick={toggleTheme}>
-              {theme === "light" ? (
-                <DarkModeOutlinedIcon
-                  sx={{ color: "#fff" }}
-                  alt="Toggle theme"
-                />
-              ) : (
-                <DarkModeIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-              )}
-            </IconButton>
-            <IconButton onClick={handleLoginLogout}>
-              {!isLoggedIn ? (
-                <LoginIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-              ) : (
-                <LogoutIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-              )}
-            </IconButton>
+            <Tooltip title={theme === "light" ? "Dark Mode" : "Light Mode"}>
+              <IconButton sx={{ mr: 4 }} onClick={toggleTheme}>
+                {theme === "light" ? (
+                  <DarkModeIcon sx={{ color: "#fff" }} alt="Toggle theme" />
+                ) : (
+                  <LightModeIcon sx={{ color: "#fff" }} alt="Toggle theme" />
+                )}
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title={isLoggedIn ? "Logout" : "Login"}>
+              <IconButton onClick={handleLoginLogout}>
+                {!isLoggedIn ? (
+                  <LoginIcon sx={{ color: "#fff" }} alt="Toggle theme" />
+                ) : (
+                  <LogoutIcon sx={{ color: "#fff" }} alt="Toggle theme" />
+                )}
+              </IconButton>
+            </Tooltip>
           </Box>
         </Toolbar>
       </Container>
