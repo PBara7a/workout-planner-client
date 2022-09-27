@@ -86,7 +86,7 @@ const SignInForm = () => {
     <Grid
       container
       component="main"
-      sx={{ height: "100%" }}
+      sx={{ height: "100vh" }}
       justifyContent="center"
     >
       <Grid

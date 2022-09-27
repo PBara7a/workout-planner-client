@@ -10,7 +10,6 @@ const Footer = () => {
         variant="body2"
         color={theme === "light" ? "text.secondary" : "common.white"}
         align="center"
-        sx={{ position: "f" }}
       >
         {"Copyright © "}
         <Link

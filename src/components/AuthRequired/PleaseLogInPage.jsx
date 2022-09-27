@@ -1,3 +1,4 @@
+import { useTheme } from "../App";
 import { Container } from "@mui/system";
 import { Typography } from "@mui/material";
 
@@ -9,7 +10,9 @@ const styles = {
   alignItems: "center",
 };
 
-const PleaseLogInPage = ({ theme }) => {
+const PleaseLogInPage = () => {
+  const { theme } = useTheme();
+
   return (
     <Container sx={{ ...styles, color: theme === "light" ? "#222" : "#ddd" }}>
       <Typography variant="h2">Authentication Required</Typography>

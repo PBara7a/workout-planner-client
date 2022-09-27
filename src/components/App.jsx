@@ -8,7 +8,7 @@ import SignInForm from "./Login&Register/SignInForm";
 import Workouts from "./Workouts/Workouts";
 import Collection from "./Collection/Collection";
 import PleaseLogInPage from "./AuthRequired/PleaseLogInPage";
-import CreateWorkout from "./CreateWorkoutPage/CreateWorkout";
+import CreateWorkout from "./CreateWorkout/CreateWorkout";
 import Footer from "./Footer/Footer";
 import "../styles/App.css";
 
