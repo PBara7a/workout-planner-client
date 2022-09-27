@@ -24,51 +24,61 @@ const Collection = () => {
 
   return (
     <Container id="collection-page">
-      {/* {isCollectionEmpty && (
-        <div className="collection-empty">
-          <h2>Oh! Still empty!</h2>
-          <div className="sad-face">
+      {isCollectionEmpty && (
+        <Grid container flexDirection="column" alignItems="center">
+          <Grid item>
+            <Typography
+              variant="h1"
+              sx={{ fontSize: "3rem", marginBottom: "4rem" }}
+              style={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
+            >
+              Oh! Still empty!
+            </Typography>
+          </Grid>
+          <Grid item>
             <img src="sad.png" alt="sad face" />
-          </div>
-        </div>
-      )} */}
+          </Grid>
+        </Grid>
+      )}
 
-      <Grid container flexDirection="column" alignItems="center">
-        <Grid item>
-          <Typography
-            variant="h1"
-            sx={{ fontSize: "3rem", marginBottom: "2rem" }}
-            style={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
+      {isLoggedIn && !isCollectionEmpty && (
+        <Grid container flexDirection="column" alignItems="center">
+          <Grid item>
+            <Typography
+              variant="h1"
+              sx={{ fontSize: "3rem", marginBottom: "2rem" }}
+              style={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
+            >
+              Collection
+            </Typography>
+          </Grid>
+
+          <Grid
+            container
+            justifyContent="center"
+            spacing={!openWorkout ? 3 : 0}
+            sx={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
           >
-            Collection
-          </Typography>
+            {openWorkout ? (
+              <WorkoutCardExpanded
+                workout={openWorkout}
+                setOpenWorkout={setOpenWorkout}
+                theme={theme}
+              />
+            ) : (
+              collection?.map((workout) => (
+                <Grid key={workout.id} item md={4} lg={3}>
+                  <WorkoutCard
+                    workout={workout}
+                    open={setOpenWorkout}
+                    theme={theme}
+                  />
+                </Grid>
+              ))
+            )}
+          </Grid>
         </Grid>
-
-        <Grid
-          container
-          justifyContent="center"
-          spacing={!openWorkout ? 3 : 0}
-          sx={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
-        >
-          {openWorkout ? (
-            <WorkoutCardExpanded
-              workout={openWorkout}
-              setOpenWorkout={setOpenWorkout}
-              theme={theme}
-            />
-          ) : (
-            collection?.map((workout) => (
-              <Grid key={workout.id} item md={4} lg={3}>
-                <WorkoutCard
-                  workout={workout}
-                  open={setOpenWorkout}
-                  theme={theme}
-                />
-              </Grid>
-            ))
-          )}
-        </Grid>
-      </Grid>
+      )}
     </Container>
   );
 };
