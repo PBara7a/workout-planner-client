@@ -1,18 +1,38 @@
-import { useState } from "react";
-import WorkoutCard from "./WorkoutCard";
-import WorkoutCardExpanded from "./WorkoutExpanded";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 import { useTheme } from "../App";
-import { useExercises } from "../contexts/ExercisesContext";
-import { Grid, Typography } from "@mui/material";
+import WorkoutCard from "../Workouts/WorkoutCard";
+import WorkoutCardExpanded from "../Workouts/WorkoutExpanded";
 import { Container } from "@mui/system";
+import { Grid, Typography } from "@mui/material";
 
-const MyWorkoutsPage = () => {
+const Collection = () => {
   const [openWorkout, setOpenWorkout] = useState(null);
-  const { workouts } = useExercises();
+  const { isLoggedIn, collection } = useUser();
   const { theme } = useTheme();
 
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("../auth-required", { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
+
+  const isCollectionEmpty = collection.length === 0;
+
   return (
-    <Container id="workout-page">
+    <Container id="collection-page">
+      {/* {isCollectionEmpty && (
+        <div className="collection-empty">
+          <h2>Oh! Still empty!</h2>
+          <div className="sad-face">
+            <img src="sad.png" alt="sad face" />
+          </div>
+        </div>
+      )} */}
+
       <Grid container flexDirection="column" alignItems="center">
         <Grid item>
           <Typography
@@ -20,7 +40,7 @@ const MyWorkoutsPage = () => {
             sx={{ fontSize: "3rem", marginBottom: "2rem" }}
             style={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
           >
-            Workouts
+            Collection
           </Typography>
         </Grid>
 
@@ -37,7 +57,7 @@ const MyWorkoutsPage = () => {
               theme={theme}
             />
           ) : (
-            workouts?.map((workout) => (
+            collection?.map((workout) => (
               <Grid key={workout.id} item md={4} lg={3}>
                 <WorkoutCard
                   workout={workout}
@@ -53,4 +73,4 @@ const MyWorkoutsPage = () => {
   );
 };
 
-export default MyWorkoutsPage;
+export default Collection;

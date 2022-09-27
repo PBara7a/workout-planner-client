@@ -30,7 +30,8 @@
   color: #fff;
 }
 
-#workout-page {
+#workout-page,
+#collection-page {
   padding-top: 5rem;
 }
 
