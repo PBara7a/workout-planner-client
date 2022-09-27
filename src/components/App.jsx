@@ -7,6 +7,7 @@ import Home from "./Home";
 import SignInForm from "./Login&Register/SignInForm";
 import Workouts from "./Workouts/Workouts";
 import Collection from "./Collection/Collection";
+import PleaseLogInPage from "./PleaseLogInPage";
 import Footer from "./Footer";
 import "../styles/App.css";
 
@@ -33,6 +34,10 @@ function App() {
               <Route path="/login" element={<SignInForm />} />
               <Route path="/workouts" element={<Workouts />} />
               <Route path="/collection" element={<Collection />} />
+              <Route
+                path="/auth-required"
+                element={<PleaseLogInPage theme={theme} />}
+              />
             </Routes>
 
             <Footer />
