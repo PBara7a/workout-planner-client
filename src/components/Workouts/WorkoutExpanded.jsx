@@ -80,7 +80,7 @@ const WorkoutCardExpanded = ({ workout, setOpenWorkout, theme }) => {
       >
         <FormGroup>
           <TextField
-            className="custom-email-input"
+            className="custom-input"
             color={theme === "light" ? "primary" : "secondary"}
             type="email"
             placeholder="your@email.com"
