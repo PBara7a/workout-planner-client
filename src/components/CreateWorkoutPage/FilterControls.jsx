@@ -1,3 +1,7 @@
+import { useTheme } from "../App";
+import { MenuItem, Select, TextField } from "@mui/material";
+import { Stack } from "@mui/system";
+
 const FilterControls = ({
   filters,
   handleFilterChange,
@@ -5,61 +9,69 @@ const FilterControls = ({
   targets,
   equipments,
 }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="exercises-filters">
-      <select
+    <Stack direction="row" mb={1} spacing={1}>
+      <Select
+        className="custom-input"
+        color={theme === "light" ? "primary" : "secondary"}
         value={filters.bodypartFilter}
         name="bodypartFilter"
         onChange={handleFilterChange}
+        fullWidth
       >
-        <option className="option" value="">
-          --Group--
-        </option>
+        <MenuItem value="">--Group--</MenuItem>
         {bodyparts.map((part) => (
-          <option className="option" key={part.id} value={part.id}>
+          <MenuItem className="option" key={part.id} value={part.id}>
             {part.name}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <select
+      <Select
+        className="custom-input"
+        color={theme === "light" ? "primary" : "secondary"}
         value={filters.targetFilter}
         name="targetFilter"
         onChange={handleFilterChange}
+        fullWidth
       >
-        <option className="option" value="">
-          --Target--
-        </option>
+        <MenuItem value="">--Target--</MenuItem>
         {targets.map((target) => (
-          <option className="option" key={target.id} value={target.id}>
+          <MenuItem className="option" key={target.id} value={target.id}>
             {target.name}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <select
+      <Select
+        className="custom-input"
+        color={theme === "light" ? "primary" : "secondary"}
         value={filters.equipmentFilter}
         name="equipmentFilter"
         onChange={handleFilterChange}
+        fullWidth
       >
-        <option className="option" value="">
-          --Equipment--
-        </option>
+        <MenuItem value="">--Equipment--</MenuItem>
         {equipments.map((equipment) => (
-          <option className="option" key={equipment.id} value={equipment.id}>
+          <MenuItem key={equipment.id} value={equipment.id}>
             {equipment.name}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <input
+      <TextField
+        className="custom-input"
+        color={theme === "light" ? "primary" : "secondary"}
         type="text"
         placeholder="name"
         name="name"
         value={filters.name}
         onChange={handleFilterChange}
+        fullWidth
       />
-    </div>
+    </Stack>
   );
 };
 

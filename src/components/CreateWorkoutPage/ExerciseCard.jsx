@@ -1,9 +1,18 @@
 import { useExercises } from "../contexts/ExercisesContext";
+import { useTheme } from "../App";
 import urls from "../../utils/demoUrls.json";
-import "../../styles/ExerciseCard.css";
+import {
+  Avatar,
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+  CardActionArea,
+} from "@mui/material";
 
 const ExerciseCard = ({ exercise, handleClick, deletable }) => {
   const { targets, equipments } = useExercises();
+  const { theme } = useTheme();
 
   const targetName = targets.find(
     (target) => target.id === exercise.targetId
@@ -13,29 +22,66 @@ const ExerciseCard = ({ exercise, handleClick, deletable }) => {
     (equipment) => equipment.id === exercise.equipmentId
   ).name;
 
-  const isScrollNeeded = exercise.name.length > 20;
+  const isScrollNeeded = exercise.name.length > 15;
 
   return (
-    <div className="card" onClick={() => handleClick(deletable, exercise)}>
-      <div className="imgBox">
-        <img
-          src={urls[exercise.demo]}
-          alt="Exercise demo"
-          className="card__image"
+    <Card
+      id="exercise-card"
+      variant="outlined"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        minWidth: 300,
+        color: "inherit",
+        background: "none",
+        borderColor: "grey.500",
+      }}
+      onClick={() => handleClick(deletable, exercise)}
+    >
+      <CardActionArea>
+        <CardHeader
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            position: "relative",
+          }}
+          style={isScrollNeeded ? { marginBottom: "1.7rem" } : {}}
+          avatar={
+            <Avatar
+              src={urls[exercise.demo]}
+              alt="Exercise demo"
+              variant="rounded"
+              sx={{ height: "150px", width: "150px" }}
+            />
+          }
+          subheader={
+            <Typography
+              variant="h3"
+              sx={
+                theme === "light"
+                  ? { fontSize: "1.5rem", color: "primary.main" }
+                  : { fontSize: "1.5rem", color: "secondary.main" }
+              }
+              className={isScrollNeeded ? "scroll-left" : ""}
+            >
+              {exercise.name.toUpperCase()}
+            </Typography>
+          }
         />
-        <div>
-          <span className={isScrollNeeded ? "scroll-left" : ""}>
-            {exercise.name.toUpperCase()}
-          </span>
-        </div>
-      </div>
-      <div className="content">
-        <h4>Target:</h4>
-        {targetName}
-        <h4>Equipment:</h4>
-        {equipmentName}
-      </div>
-    </div>
+        <CardContent>
+          <Typography sx={{ fontSize: "1.3rem" }} variant="h4">
+            Target:
+          </Typography>
+          <Typography variant="p">{targetName}</Typography>
+
+          <Typography sx={{ fontSize: "1.3rem" }} variant="h4">
+            Equipment:
+          </Typography>
+          <Typography variant="p">{equipmentName}</Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 

@@ -1,16 +1,15 @@
 import { createContext, useState, useContext } from "react";
-import { Routes, Route } from "react-router-dom";
 import { ExercisesContextProvider } from "./contexts/ExercisesContext";
 import { UserContextProvider } from "./contexts/UserContext";
-import Footer from "./Footer";
-import SideMenu from "./SideMenu";
-import Home from "./Home";
+import { Routes, Route } from "react-router-dom";
+import Header from "./Header/Header";
+import Home from "./Home/Home";
+import SignInForm from "./Login&Register/SignInForm";
+import Workouts from "./Workouts/Workouts";
+import Collection from "./Collection/Collection";
+import PleaseLogInPage from "./AuthRequired/PleaseLogInPage";
 import CreateWorkout from "./CreateWorkoutPage/CreateWorkout";
-import Workouts from "./WorkoutsPage/Workouts";
-import Collection from "./MyCollection/Collection";
-import Header from "./Header";
-import UserForm from "./Login&Register/UserForm";
-import PleaseLogInPage from "./PleaseLogInPage";
+import Footer from "./Footer/Footer";
 import "../styles/App.css";
 
 const ThemeContext = createContext();
@@ -18,7 +17,7 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
     setTheme((curTheme) => (curTheme === "light" ? "dark" : "light"));
@@ -29,20 +28,20 @@ function App() {
       <UserContextProvider>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <div className="App" id={theme}>
-            <div className="main-layout">
-              <SideMenu />
-              <main>
-                <Header />
-                <Routes>
-                  <Route path="/login" element={<UserForm />} />
-                  <Route path="/" element={<Home />} />
-                  <Route path="/workouts" element={<Workouts />} />
-                  <Route path="/my-collection" element={<Collection />} />
-                  <Route path="/create-workout" element={<CreateWorkout />} />
-                  <Route path="/auth-required" element={<PleaseLogInPage />} />
-                </Routes>
-              </main>
-            </div>
+            <Header />
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<SignInForm />} />
+              <Route path="/workouts" element={<Workouts />} />
+              <Route path="/collection" element={<Collection />} />
+              <Route path="/create-workout" element={<CreateWorkout />} />
+              <Route
+                path="/auth-required"
+                element={<PleaseLogInPage theme={theme} />}
+              />
+            </Routes>
+
             <Footer />
           </div>
         </ThemeContext.Provider>

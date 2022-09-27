@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useExercises } from "../contexts/ExercisesContext";
+import { useTheme } from "../App";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import ExerciseCard from "./ExerciseCard";
-import "../../styles/CreateWorkout.css";
 import PaginationControls from "./PaginationControls";
 import FilterControls from "./FilterControls";
 import NewWorkoutForm from "./NewWorkoutForm";
+import { Container } from "@mui/system";
+import { Grid, Typography } from "@mui/material";
 
 const defaultFilters = {
   bodypartFilter: "",
@@ -18,6 +21,8 @@ const CreateWorkout = () => {
   const [page, setPage] = useState(1);
   const [filters, setFilters] = useState(defaultFilters);
   const [workout, setWorkout] = useState([]);
+  const { theme } = useTheme();
+  const { width } = useWindowDimensions();
 
   const handlePageChange = (action) => {
     const lastPage = Math.ceil(filteredExercises.length / numOfCardsPerPage);
@@ -80,7 +85,7 @@ const CreateWorkout = () => {
   const resetWorkout = () => setWorkout([]);
 
   // Pagination
-  const numOfCardsPerPage = 4;
+  const numOfCardsPerPage = width < 800 ? 2 : 3;
   const startIndex = (page - 1) * numOfCardsPerPage;
   const endIndex = page * numOfCardsPerPage;
 
@@ -127,43 +132,61 @@ const CreateWorkout = () => {
   const exercisesToRender = filteredExercises.slice(startIndex, endIndex);
 
   return (
-    <div className="create-workout-page">
-      <NewWorkoutForm
-        workout={workout}
-        resetWorkout={resetWorkout}
-        removeExercise={removeExercise}
-      />
+    <Container id="create-workout-page">
+      <Grid
+        container
+        flexDirection="column"
+        sx={theme === "light" ? { color: "#222" } : { color: "#ddd" }}
+      >
+        <Grid item>
+          <Typography
+            variant="h1"
+            sx={{ fontSize: "3rem", marginBottom: "1rem", textAlign: "center" }}
+          >
+            Create Workout
+          </Typography>
+        </Grid>
 
-      <div className="exercises-container">
-        {exercisesToRender.map((exercise, i) => (
-          <ExerciseCard
-            key={exercise.id}
-            style={{ "--z-index": exercisesToRender.length - i }}
-            exercise={exercise}
-            handleClick={handleClick}
-            index={i}
+        <Grid item>
+          <NewWorkoutForm
+            workout={workout}
+            resetWorkout={resetWorkout}
+            removeExercise={removeExercise}
           />
-        ))}
-      </div>
+        </Grid>
 
-      <div>
-        <FilterControls
-          filters={filters}
-          handleFilterChange={handleFilterChange}
-          bodyparts={bodyparts}
-          targets={targetOptions}
-          equipments={equipmentOptions}
-        />
+        <Grid item container justifyContent="center" my={2} spacing={3}>
+          {exercisesToRender.map((exercise, i) => (
+            <Grid item key={exercise.id}>
+              <ExerciseCard
+                style={{ "--z-index": exercisesToRender.length - i }}
+                exercise={exercise}
+                handleClick={handleClick}
+                index={i}
+              />
+            </Grid>
+          ))}
+        </Grid>
 
-        <PaginationControls
-          page={page}
-          setPage={setPage}
-          numOfExercises={filteredExercises.length}
-          numOfCardsPerPage={numOfCardsPerPage}
-          handlePageChange={handlePageChange}
-        />
-      </div>
-    </div>
+        <Grid item>
+          <FilterControls
+            filters={filters}
+            handleFilterChange={handleFilterChange}
+            bodyparts={bodyparts}
+            targets={targetOptions}
+            equipments={equipmentOptions}
+          />
+
+          <PaginationControls
+            page={page}
+            setPage={setPage}
+            numOfExercises={filteredExercises.length}
+            numOfCardsPerPage={numOfCardsPerPage}
+            handlePageChange={handlePageChange}
+          />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 
