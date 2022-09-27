@@ -12,7 +12,7 @@ const Home = () => {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      sx={{ minHeight: "100vh" }}
+      sx={{ minHeight: "95vh" }}
       id="home"
     >
       <Grid item>

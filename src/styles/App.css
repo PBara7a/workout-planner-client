@@ -9,18 +9,20 @@
 
 .App {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #ddd;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background: #fff;
 }
 
 #dark.App {
-  height: 100vh;
   background: #222;
 }
 
 #home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #000;
 }
 
@@ -28,11 +30,33 @@
   color: #fff;
 }
 
+#workout-page {
+  padding-top: 5rem;
+}
+
+#workout-card {
+  transition: 0.2s;
+}
+
+#workout-card:hover {
+  transform: scale(1.05);
+}
+
+.custom-email-input input {
+  border: 1px solid grey !important;
+  border-radius: 4px;
+}
+
+#dark .custom-email-input input {
+  color: #ddd !important;
+}
+
+#dark .custom-email-input input::placeholder {
+  color: white !important;
+}
+
 footer {
-  width: 100%;
   margin: 0.2rem;
-  position: fixed;
-  bottom: 0;
 }
 
 /* .App {
