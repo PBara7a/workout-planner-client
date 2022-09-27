@@ -1,5 +1,5 @@
 import { useState } from "react";
-import quotes from "../utils/quotes";
+import quotes from "../../utils/quotes";
 import { Grid, Typography } from "@mui/material";
 
 const Home = () => {

@@ -2,13 +2,13 @@ import { createContext, useState, useContext } from "react";
 import { ExercisesContextProvider } from "./contexts/ExercisesContext";
 import { UserContextProvider } from "./contexts/UserContext";
 import { Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import Home from "./Home";
+import Header from "./Header/Header";
+import Home from "./Home/Home";
 import SignInForm from "./Login&Register/SignInForm";
 import Workouts from "./Workouts/Workouts";
 import Collection from "./Collection/Collection";
-import PleaseLogInPage from "./PleaseLogInPage";
-import Footer from "./Footer";
+import PleaseLogInPage from "./AuthRequired/PleaseLogInPage";
+import Footer from "./Footer/Footer";
 import "../styles/App.css";
 
 const ThemeContext = createContext();

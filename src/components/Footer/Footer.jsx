@@ -1,5 +1,5 @@
 import { Typography, Link } from "@mui/material";
-import { useTheme } from "./App";
+import { useTheme } from "../App";
 
 const Footer = () => {
   const { theme } = useTheme();
