@@ -10,9 +10,9 @@ import { Container } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
 
 const defaultFilters = {
-  bodypartFilter: "",
-  targetFilter: "",
-  equipmentFilter: "",
+  bodypartFilter: 9, // chest id
+  targetFilter: 9, // pectorals id
+  equipmentFilter: 1, // bodyweight id
   name: "",
 };
 

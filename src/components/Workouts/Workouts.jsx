@@ -43,6 +43,7 @@ const MyWorkoutsPage = () => {
                   workout={workout}
                   open={setOpenWorkout}
                   theme={theme}
+                  hideDelete={true}
                 />
               </Grid>
             ))

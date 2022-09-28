@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
 import { useTheme } from "../App";
+import client from "../../utils/client";
 import { Button, FormGroup, Stack, TextField } from "@mui/material";
 
-const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
+const NewWorkoutForm = ({ workout, resetWorkout }) => {
   const defaultData = { name: "", target: "", notes: "" };
   const [formData, setFormData] = useState(defaultData);
-  const { user, isLoggedIn, createWorkout } = useUser();
+  const { user, isLoggedIn } = useUser();
   const { theme } = useTheme();
   let navigate = useNavigate();
 
@@ -37,8 +38,16 @@ const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
     }
   };
 
+  const createWorkout = async (data) => {
+    try {
+      await client.post("/workout", data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
-    <FormGroup onSubmit={handleSubmit}>
+    <FormGroup>
       <Stack direction="row" spacing={1}>
         <TextField
           className="custom-input"
@@ -101,6 +110,7 @@ const NewWorkoutForm = ({ workout, resetWorkout, removeExercise }) => {
           color={theme === "light" ? "primary" : "secondary"}
           type="submit"
           sx={{ width: "100px" }}
+          onClick={handleSubmit}
         >
           Create
         </Button>

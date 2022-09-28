@@ -7,7 +7,7 @@ import {
   CardActions,
 } from "@mui/material";
 
-const WorkoutCard = ({ workout, open, theme }) => {
+const WorkoutCard = ({ workout, open, theme, hideDelete, deleteWorkout }) => {
   return (
     <Card
       sx={{
@@ -34,9 +34,15 @@ const WorkoutCard = ({ workout, open, theme }) => {
         >
           Open
         </Button>
-        <Button size="small" color="error">
-          Delete
-        </Button>
+        {!hideDelete && (
+          <Button
+            size="small"
+            color="error"
+            onClick={() => deleteWorkout(workout.id)}
+          >
+            Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

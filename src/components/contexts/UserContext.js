@@ -24,22 +24,6 @@ export const UserContextProvider = ({ children }) => {
     }
   }, []);
 
-  const collection = user ? user.workouts : [];
-
-  const createWorkout = async (data) => {
-    try {
-      const {
-        data: {
-          data: { workout },
-        },
-      } = await client.post("/workout", data);
-
-      collection.push(workout);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   const isLoggedIn = Boolean(
     localStorage.getItem(process.env.REACT_APP_USER_ID)
   );
@@ -48,8 +32,6 @@ export const UserContextProvider = ({ children }) => {
     user,
     setUser,
     isLoggedIn,
-    collection,
-    createWorkout,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

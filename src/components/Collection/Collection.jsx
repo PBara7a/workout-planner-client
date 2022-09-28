@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
 import { useTheme } from "../App";
+import client from "../../utils/client";
 import WorkoutCard from "../Workouts/WorkoutCard";
 import WorkoutCardExpanded from "../Workouts/WorkoutExpanded";
 import { Container } from "@mui/system";
@@ -9,7 +10,9 @@ import { Grid, Typography } from "@mui/material";
 
 const Collection = () => {
   const [openWorkout, setOpenWorkout] = useState(null);
-  const { isLoggedIn, collection } = useUser();
+  const [collection, setCollection] = useState([]);
+  const [value, setValue] = useState(0);
+  const { user, isLoggedIn } = useUser();
   const { theme } = useTheme();
 
   let navigate = useNavigate();
@@ -17,8 +20,24 @@ const Collection = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("../auth-required", { replace: true });
+    } else {
+      (async () => {
+        const {
+          data: { data },
+        } = await client.get(`/user/${user.id}/workouts`);
+        setCollection(data);
+      })();
     }
-  }, [isLoggedIn, navigate]);
+  }, [user?.id, isLoggedIn, navigate, value]);
+
+  const deleteWorkout = async (id) => {
+    try {
+      await client.delete(`/workout/${id}`);
+      setValue(() => value + 1);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const isCollectionEmpty = collection.length === 0;
 
@@ -72,6 +91,7 @@ const Collection = () => {
                     workout={workout}
                     open={setOpenWorkout}
                     theme={theme}
+                    deleteWorkout={deleteWorkout}
                   />
                 </Grid>
               ))
