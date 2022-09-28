@@ -21,7 +21,7 @@ const FilterControls = ({
         onChange={handleFilterChange}
         fullWidth
       >
-        <MenuItem value="">--Group--</MenuItem>
+        <MenuItem value={0}>--Group--</MenuItem>
         {bodyparts.map((part) => (
           <MenuItem className="option" key={part.id} value={part.id}>
             {part.name}
@@ -37,7 +37,7 @@ const FilterControls = ({
         onChange={handleFilterChange}
         fullWidth
       >
-        <MenuItem value="">--Target--</MenuItem>
+        <MenuItem value={0}>--Target--</MenuItem>
         {targets.map((target) => (
           <MenuItem className="option" key={target.id} value={target.id}>
             {target.name}
@@ -53,7 +53,7 @@ const FilterControls = ({
         onChange={handleFilterChange}
         fullWidth
       >
-        <MenuItem value="">--Equipment--</MenuItem>
+        <MenuItem value={0}>--Equipment--</MenuItem>
         {equipments.map((equipment) => (
           <MenuItem key={equipment.id} value={equipment.id}>
             {equipment.name}
