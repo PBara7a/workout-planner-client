@@ -234,7 +234,9 @@ const SignInForm = () => {
 
                 <ListItem>
                   <ListItemIcon>
-                    {/(?=.*?[#?!@$%^&*-])/.test(data.password) ? "✅" : "❌"}
+                    {/(?=.*?[{(})#?!@£$%^&*-])/.test(data.password)
+                      ? "✅"
+                      : "❌"}
                   </ListItemIcon>
                   <ListItemText primary="Include at least one special character" />
                 </ListItem>
