@@ -1,4 +1,9 @@
-const quotes = [
+type Quote = {
+  q: String;
+  a: String;
+};
+
+const quotes: Quote[] = [
   {
     q: "To be number one, you have to train like you're number two.",
     a: "Maurice Green",
