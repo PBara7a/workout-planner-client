@@ -1,6 +1,6 @@
 type Quote = {
-  q: String;
-  a: String;
+  q: string;
+  a: string;
 };
 
 const quotes: Quote[] = [
