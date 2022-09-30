@@ -10,13 +10,13 @@ const styles = {
   alignItems: "center",
 };
 
-const PleaseLogInPage = () => {
+const PleaseLogInPage = (): JSX.Element => {
   const { theme } = useTheme();
 
   return (
     <Container sx={{ ...styles, color: theme === "light" ? "#222" : "#ddd" }}>
       <Typography variant="h2">Authentication Required</Typography>
-      <Typography variant="p">
+      <Typography variant="body1">
         Please log in first to create and access your workout collection.
       </Typography>
     </Container>
