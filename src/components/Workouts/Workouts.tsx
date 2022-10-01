@@ -5,9 +5,10 @@ import { useTheme } from "../App";
 import { useExercises } from "../contexts/ExercisesContext";
 import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import Workout from "../../models/workout";
 
-const MyWorkoutsPage = () => {
-  const [openWorkout, setOpenWorkout] = useState(null);
+const MyWorkoutsPage = (): JSX.Element => {
+  const [openWorkout, setOpenWorkout] = useState<Workout | null>(null);
   const { workouts } = useExercises();
   const { theme } = useTheme();
 
@@ -44,6 +45,7 @@ const MyWorkoutsPage = () => {
                   open={setOpenWorkout}
                   theme={theme}
                   hideDelete={true}
+                  deleteWorkout={() => {}}
                 />
               </Grid>
             ))

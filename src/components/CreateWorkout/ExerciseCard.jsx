@@ -1,6 +1,6 @@
 import { useExercises } from "../contexts/ExercisesContext";
 import { useTheme } from "../App";
-import urls from "../../utils/demoUrls.json";
+import getUrl from "../../utils/getUrl";
 import {
   Avatar,
   Card,
@@ -49,7 +49,7 @@ const ExerciseCard = ({ exercise, handleClick, deletable }) => {
           style={isScrollNeeded ? { marginBottom: "1.7rem" } : {}}
           avatar={
             <Avatar
-              src={urls[exercise.demo]}
+              src={getUrl(exercise.demo)}
               alt="Exercise demo"
               variant="rounded"
               sx={{ height: "150px", width: "150px" }}

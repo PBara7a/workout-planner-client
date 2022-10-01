@@ -1,12 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
+import Bodypart from "../../models/bodypart";
+import Equipment from "../../models/equipment";
+import Exercise from "../../models/exercise";
+import Target from "../../models/target";
+import Workout from "../../models/workout";
 import client from "../../utils/client";
 
-const ExercisesContext = React.createContext();
+interface ExercisesContextInterface {
+  exercises: Exercise[];
+  workouts: Workout[];
+  bodyparts: Bodypart[];
+  targets: Target[];
+  equipments: Equipment[];
+}
+
+const ExercisesContext = createContext<ExercisesContextInterface>(
+  {} as ExercisesContextInterface
+);
 
 export const useExercises = () => useContext(ExercisesContext);
 
-export const ExercisesContextProvider = ({ children }) => {
-  const [exerciseData, setExerciseData] = useState({
+export const ExercisesContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode[];
+}) => {
+  const [exerciseData, setExerciseData] = useState<ExercisesContextInterface>({
     exercises: [],
     workouts: [],
     bodyparts: [],

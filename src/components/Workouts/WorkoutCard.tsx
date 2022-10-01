@@ -6,8 +6,23 @@ import {
   CardActionArea,
   CardActions,
 } from "@mui/material";
+import Workout from "../../models/workout";
 
-const WorkoutCard = ({ workout, open, theme, hideDelete, deleteWorkout }) => {
+type WorkoutCardProps = {
+  workout: Workout;
+  open: React.Dispatch<React.SetStateAction<Workout | null>>;
+  theme: string;
+  hideDelete: boolean;
+  deleteWorkout: (id: number) => void;
+};
+
+const WorkoutCard = ({
+  workout,
+  open,
+  theme,
+  hideDelete,
+  deleteWorkout,
+}: WorkoutCardProps): JSX.Element => {
   return (
     <Card
       sx={{

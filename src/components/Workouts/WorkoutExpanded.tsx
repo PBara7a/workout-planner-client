@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import client from "../../utils/client";
-import urls from "../../utils/demoUrls.json";
+import getUrl from "../../utils/getUrl";
 import {
   Button,
   Card,
@@ -15,12 +15,23 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
+import Workout from "../../models/workout";
 
-const WorkoutCardExpanded = ({ workout, setOpenWorkout, theme }) => {
+type WorkoutCardExpandedProps = {
+  workout: Workout;
+  setOpenWorkout: React.Dispatch<React.SetStateAction<Workout | null>>;
+  theme: string;
+};
+
+const WorkoutCardExpanded = ({
+  workout,
+  setOpenWorkout,
+  theme,
+}: WorkoutCardExpandedProps): JSX.Element => {
   const [email, setEmail] = useState("");
   const { width } = useWindowDimensions();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const data = { email, workout: workout.id };
@@ -56,7 +67,7 @@ const WorkoutCardExpanded = ({ workout, setOpenWorkout, theme }) => {
           {workout.exercises.map((exercise) => (
             <ImageListItem key={exercise.id}>
               <img
-                src={urls[exercise.demo]}
+                src={getUrl(exercise.demo)}
                 alt="exercise demo"
                 style={{
                   height: "200px",
