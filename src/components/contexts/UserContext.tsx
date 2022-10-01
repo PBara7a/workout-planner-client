@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import User from "../../models/user";
 import client from "../../utils/client";
 
@@ -17,7 +10,7 @@ const idInLocalStorage = Number(
 
 interface UserContextInterface {
   user: User | undefined;
-  setUser: Dispatch<SetStateAction<User | undefined>>;
+  setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   isLoggedIn: boolean;
 }
 

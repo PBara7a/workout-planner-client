@@ -14,7 +14,9 @@ interface ExercisesContextInterface {
   equipments: Equipment[];
 }
 
-const ExercisesContext = createContext<ExercisesContextInterface | null>(null);
+const ExercisesContext = createContext<ExercisesContextInterface>(
+  {} as ExercisesContextInterface
+);
 
 export const useExercises = () => useContext(ExercisesContext);
 
