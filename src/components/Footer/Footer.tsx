@@ -1,7 +1,7 @@
 import { Typography, Link } from "@mui/material";
 import { useTheme } from "../App";
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   const { theme } = useTheme();
 
   return (
