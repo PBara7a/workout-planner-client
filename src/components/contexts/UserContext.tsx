@@ -14,7 +14,9 @@ interface UserContextInterface {
   isLoggedIn: boolean;
 }
 
-const UserContext = createContext<UserContextInterface | null>(null);
+const UserContext = createContext<UserContextInterface>(
+  {} as UserContextInterface
+);
 
 export const useUser = () => useContext(UserContext);
 

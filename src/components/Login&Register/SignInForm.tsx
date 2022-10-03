@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../App";
 import { useUser } from "../contexts/UserContext";
@@ -19,13 +19,21 @@ import {
 } from "@mui/material";
 
 // Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
-const passwordRegex =
+const passwordRegex: RegExp =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-const SignInForm = () => {
-  const [data, setData] = useState({ username: "", password: "" });
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [isLoginForm, setIsLoginForm] = useState(true);
+interface SignInFormData {
+  username: string;
+  password: string;
+}
+
+const SignInForm = (): JSX.Element => {
+  const [data, setData] = useState<SignInFormData>({
+    username: "",
+    password: "",
+  });
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [isLoginForm, setIsLoginForm] = useState<boolean>(true);
   const { setUser } = useUser();
   const { theme } = useTheme();
 
@@ -38,7 +46,7 @@ const SignInForm = () => {
 
   let navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
 
     if (isLoginForm) {
@@ -49,7 +57,7 @@ const SignInForm = () => {
     }
   };
 
-  const registerUser = async () => {
+  const registerUser = async (): Promise<void> => {
     try {
       await client.post("/user", user);
     } catch (e) {
@@ -57,14 +65,14 @@ const SignInForm = () => {
     }
   };
 
-  const login = async () => {
+  const login = async (): Promise<void> => {
     try {
       const {
         data: { data },
       } = await client.post("/login", user);
 
-      localStorage.setItem(process.env.REACT_APP_USER_TOKEN, data.token);
-      localStorage.setItem(process.env.REACT_APP_USER_ID, data.user.id);
+      localStorage.setItem(process.env.REACT_APP_USER_TOKEN!, data.token);
+      localStorage.setItem(process.env.REACT_APP_USER_ID!, data.user.id);
 
       setUser(data.user);
       navigate("../create-workout", { replace: true });
@@ -73,7 +81,7 @@ const SignInForm = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (name === "confirmPassword") {
       setConfirmPassword(value);
@@ -182,7 +190,7 @@ const SignInForm = () => {
                 type="password"
                 id="confirmPassword"
                 autoComplete="current-password"
-                value={data.confirmPassword}
+                value={confirmPassword}
                 onChange={handleChange}
               />
             )}
