@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
 import { useTheme } from "../App";
@@ -23,14 +23,14 @@ import {
 
 const pages = ["Home", "Workouts", "Collection", "Create Workout"];
 
-const Header = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+const Header = (): JSX.Element => {
+  const [anchorElNav, setAnchorElNav] = useState<Element | null>(null);
   const { isLoggedIn, setUser } = useUser();
   const { theme, toggleTheme } = useTheme();
 
   let navigate = useNavigate();
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: React.MouseEvent) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -40,9 +40,9 @@ const Header = () => {
 
   const handleLoginLogout = () => {
     if (isLoggedIn) {
-      localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
-      localStorage.removeItem(process.env.REACT_APP_USER_ID);
-      setUser(null);
+      localStorage.removeItem(process.env.REACT_APP_USER_TOKEN || "");
+      localStorage.removeItem(process.env.REACT_APP_USER_ID || "");
+      setUser(undefined);
       navigate("../", { replace: true });
     } else {
       navigate("../login", { replace: true });
@@ -147,24 +147,19 @@ const Header = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, color: "#fff" }}>
             <Tooltip title={theme === "light" ? "Dark Mode" : "Light Mode"}>
-              <IconButton sx={{ mr: 4 }} onClick={toggleTheme}>
-                {theme === "light" ? (
-                  <DarkModeIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-                ) : (
-                  <LightModeIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-                )}
+              <IconButton
+                sx={{ mr: 4, color: "inherit" }}
+                onClick={toggleTheme}
+              >
+                {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
               </IconButton>
             </Tooltip>
 
             <Tooltip title={isLoggedIn ? "Logout" : "Login"}>
-              <IconButton onClick={handleLoginLogout}>
-                {!isLoggedIn ? (
-                  <LoginIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-                ) : (
-                  <LogoutIcon sx={{ color: "#fff" }} alt="Toggle theme" />
-                )}
+              <IconButton sx={{ color: "inherit" }} onClick={handleLoginLogout}>
+                {!isLoggedIn ? <LoginIcon /> : <LogoutIcon />}
               </IconButton>
             </Tooltip>
           </Box>
